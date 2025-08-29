@@ -1,0 +1,130 @@
+[
+  {
+    "section_number": 1,
+    "section_title": "فناوری و زندگی",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "درس",
+        "title": "فناوری و نوآوری"
+      },
+      {
+        "lesson_number": 2,
+        "type": "درس",
+        "title": "رایانه ها همه جا هستند"
+      },
+      {
+        "lesson_number": 3,
+        "type": "درس",
+        "title": "آشنایی با الگوریتم و روند نما"
+      },
+      {
+        "lesson_number": 4,
+        "type": "درس",
+        "title": "هوش مصنوعی به زبان ساده"
+      },
+      {
+        "lesson_number": 5,
+        "type": "درس",
+        "title": "برنامه نویسی با اسکرچ"
+      }
+    ]
+  },
+  {
+    "section_number": 2,
+    "section_title": "پروژه های فناورانه",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "پروژه",
+        "title": "موتور الکتریکی"
+      },
+      {
+        "lesson_number": 2,
+        "type": "پروژه",
+        "title": "پنکه ی دستی"
+      },
+      {
+        "lesson_number": 3,
+        "type": "پروژه",
+        "title": "جرثقیل الکترومغناطیسی"
+      },
+      {
+        "lesson_number": 4,
+        "type": "پروژه",
+        "title": "ساخت توربین بادی"
+      }
+    ]
+  },
+  {
+    "section_number": 3,
+    "section_title": "مهارتهای کار و زندگی",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "مهارت",
+        "title": "مهارت گره زنی"
+      },
+      {
+        "lesson_number": 2,
+        "type": "مهارت",
+        "title": "مهارت دوخت"
+      },
+      {
+        "lesson_number": 3,
+        "type": "مهارت",
+        "title": "آشنایی با مهارت گل سازی"
+      },
+      {
+        "lesson_number": 4,
+        "type": "مهارت",
+        "title": "مهارت پرورش حشرات مفید"
+      },
+      {
+        "lesson_number": 5,
+        "type": "مهارت",
+        "title": "مهارت سبزی کاری"
+      },
+      {
+        "lesson_number": 6,
+        "type": "مهارت",
+        "title": "مهارت تهیه ی خوراک و نوشیدنی"
+      },
+      {
+        "lesson_number": 7,
+        "type": "مهارت",
+        "title": "آشنایی با صنایع شیمیایی و مهارت ساخت شمع"
+      },
+      {
+        "lesson_number": 8,
+        "type": "مهارت",
+        "title": "مهارت ساخت ربات"
+      },
+      {
+        "lesson_number": 9,
+        "type": "مهارت",
+        "title": "مهارت کار با مفتول"
+      },
+      {
+        "lesson_number": 10,
+        "type": "مهارت",
+        "title": "مهارت کار با چرم"
+      },
+      {
+        "lesson_number": 11,
+        "type": "مهارت",
+        "title": "مهارت ماکت سازی"
+      },
+      {
+        "lesson_number": 12,
+        "type": "مهارت",
+        "title": "مهارت کار با آپ اینونتور"
+      },
+      {
+        "lesson_number": 13,
+        "type": "مهارت",
+        "title": "مهارت بومی - محلی"
+      }
+    ]
+  }
+]

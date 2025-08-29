@@ -1,0 +1,224 @@
+[
+  {
+    "chapter_number": 1,
+    "chapter_title": "آفرینش",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "درس",
+        "title": "معرفت آفریدگار"
+      },
+      {
+        "lesson_number": 2,
+        "type": "حکایت",
+        "title": "محبت"
+      },
+      {
+        "lesson_number": 3,
+        "type": "درس",
+        "title": "پنجره های شناخت"
+      },
+      {
+        "lesson_number": 4,
+        "type": "بخوان و حفظ کن",
+        "title": "ای مادر عزیز"
+      },
+      {
+        "lesson_number": 5,
+        "type": "بخوان و بیندیش",
+        "title": "هدهد"
+      }
+    ]
+  },
+  {
+    "chapter_number": 2,
+    "chapter_title": "دانایی و هوشیاری",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "درس",
+        "title": "هوشیاری"
+      },
+      {
+        "lesson_number": 2,
+        "type": "بخوان و حفظ کن",
+        "title": "سخن"
+      },
+      {
+        "lesson_number": 3,
+        "type": "درس",
+        "title": "داستان من و شما"
+      },
+      {
+        "lesson_number": 4,
+        "type": "حکایت",
+        "title": "علم و عمل"
+      },
+      {
+        "lesson_number": 5,
+        "type": "درس",
+        "title": "هفت خان رستم"
+      },
+      {
+        "lesson_number": 6,
+        "type": "بخوان و بیندیش",
+        "title": "دوستان همدل"
+      }
+    ]
+  },
+  {
+    "chapter_number": 3,
+    "chapter_title": "ایران من",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "درس",
+        "title": "ای وطن"
+      },
+      {
+        "lesson_number": 2,
+        "type": "حکایت",
+        "title": "انواع مردم"
+      },
+      {
+        "lesson_number": 3,
+        "type": "درس",
+        "title": "درس آزاد فرهنگ بومی (۱)"
+      },
+      {
+        "lesson_number": 4,
+        "type": "بخوان و حفظ کن",
+        "title": "همه از خاک پاک ایرانیم"
+      },
+      {
+        "lesson_number": 5,
+        "type": "درس",
+        "title": "دریاقلی"
+      },
+      {
+        "lesson_number": 6,
+        "type": "بخوان و بیندیش",
+        "title": "تندگویان"
+      }
+    ]
+  },
+  {
+    "chapter_number": 4,
+    "chapter_title": "نام آوران",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "درس",
+        "title": "رنج هایی کشیده ام که مپرس"
+      },
+      {
+        "lesson_number": 2,
+        "type": "بخوان و حفظ کن",
+        "title": "باران"
+      },
+      {
+        "lesson_number": 3,
+        "type": "درس",
+        "title": "عطار و جلال الدین محمد"
+      },
+      {
+        "lesson_number": 4,
+        "type": "حکایت",
+        "title": "درخت علم"
+      },
+      {
+        "lesson_number": 5,
+        "type": "درس",
+        "title": "شهدا خورشیدند"
+      },
+      {
+        "lesson_number": 6,
+        "type": "بخوان و بیندیش",
+        "title": "بوعلی و بهمنیار"
+      }
+    ]
+  },
+  {
+    "chapter_number": 5,
+    "chapter_title": "راه زندگی",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "درس",
+        "title": "دوستی / مشاوره"
+      },
+      {
+        "lesson_number": 2,
+        "type": "بخوان و حفظ کن",
+        "title": "شیر خدا"
+      },
+      {
+        "lesson_number": 3,
+        "type": "درس",
+        "title": "درس آزاد فرهنگ بومی (۲)"
+      },
+      {
+        "lesson_number": 4,
+        "type": "حکایت",
+        "title": "عمر گرانمایه"
+      },
+      {
+        "lesson_number": 5,
+        "type": "درس",
+        "title": "راز زندگی"
+      },
+      {
+        "lesson_number": 6,
+        "type": "بخوان و بیندیش",
+        "title": "پیاده و سوار"
+      }
+    ]
+  },
+  {
+    "chapter_number": 6,
+    "chapter_title": "علم و عمل",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "درس",
+        "title": "میوه ی هنر"
+      },
+      {
+        "lesson_number": 2,
+        "type": "حکایت",
+        "title": "افلاطون و مرد جاهل"
+      },
+      {
+        "lesson_number": 3,
+        "type": "درس",
+        "title": "آداب مطالعه"
+      },
+      {
+        "lesson_number": 4,
+        "type": "بخوان و حفظ کن",
+        "title": "به گیتی به از راستی پیشه نیست"
+      },
+      {
+        "lesson_number": 5,
+        "type": "درس",
+        "title": "ستاره ی روشن"
+      },
+      {
+        "lesson_number": 6,
+        "type": "بخوان و بیندیش",
+        "title": "آوای گنجشکان"
+      }
+    ]
+  },
+  {
+    "chapter_number": 7,
+    "chapter_title": "نیایش",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "type": "نیایش",
+        "title": "خدایا جهان پادشاهی تو راست"
+      }
+    ]
+  }
+]

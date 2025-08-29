@@ -1,0 +1,41 @@
+name: sheshomino
+description: "A new Flutter project for learning 6th grade math."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  
+  # پکیج برای ذخیره‌سازی اطلاعات ساده در حافظه گوشی
+  shared_preferences: ^2.2.3
+  
+  # پکیج برای مدیریت وضعیت مرکزی برنامه (مثل سکه‌ها)
+  provider: ^6.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  #----------- تعریف فایل‌های جانبی پروژه -----------
+  assets:
+    - assets/images/
+    - assets/json_data/
+    - assets/json_data/farsi_json/
+
+  # برای اضافه کردن فونت فارسی، این بخش را از کامنت خارج کرده و مسیر فونت را بدهید
+  # fonts:
+  #   - family: Vazir
+  #     fonts:
+  #       - asset: assets/fonts/Vazir.ttf

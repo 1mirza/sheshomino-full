@@ -1,0 +1,130 @@
+[
+  {
+    "chapter_number": 1,
+    "chapter_title": "انتخاب تصمیم گیری و مسئولیت پذیری",
+    "lessons": [
+      {
+        "title": "واژه های تصادفی",
+        "is_elective": false
+      },
+      {
+        "title": "دیدنی های سرزمین من",
+        "is_elective": false
+      },
+      {
+        "title": "مارگیر و اژدها",
+        "is_elective": false
+      },
+      {
+        "title": "بوی خوش مدینه",
+        "is_elective": false
+      },
+      {
+        "title": "آقکند",
+        "is_elective": false
+      },
+      {
+        "title": "ماه بود و روباه",
+        "is_elective": false
+      },
+      {
+        "title": "نارنجی پوش امانتدار",
+        "is_elective": true
+      }
+    ]
+  },
+  {
+    "chapter_number": 2,
+    "chapter_title": "پروژه ی پژوهشی",
+    "lessons": [
+      {
+        "title": "روش گردآوری اطلاعات",
+        "is_elective": false
+      },
+      {
+        "title": "طرح پرسش پژوهشی",
+        "is_elective": false
+      },
+      {
+        "title": "مردم پسندها",
+        "is_elective": false
+      },
+      {
+        "title": "زیر ذره بین",
+        "is_elective": true
+      },
+      {
+        "title": "از کجا بدانم؟",
+        "is_elective": true
+      },
+      {
+        "title": "ارائه ی یافته های پژوهشی",
+        "is_elective": false
+      }
+    ]
+  },
+  {
+    "chapter_number": 3,
+    "chapter_title": "نظام مندی",
+    "lessons": [
+      {
+        "title": "لی لی حوضک",
+        "is_elective": false
+      },
+      {
+        "title": "آخر خط",
+        "is_elective": false
+      },
+      {
+        "title": "ما کجا هستیم؟",
+        "is_elective": false
+      },
+      {
+        "title": "یک اتفاق عجیب",
+        "is_elective": true
+      },
+      {
+        "title": "پیوستگی",
+        "is_elective": true
+      },
+      {
+        "title": "پلنگها و گوزنها",
+        "is_elective": true
+      }
+    ]
+  },
+  {
+    "chapter_number": 4,
+    "chapter_title": "هویت و ارزش",
+    "lessons": [
+      {
+        "title": "تپه ی کوچک",
+        "is_elective": false
+      },
+      {
+        "title": "میمون های گران بها",
+        "is_elective": false
+      },
+      {
+        "title": "شکلی دیگر",
+        "is_elective": false
+      },
+      {
+        "title": "خرسی که میخواست خرس باقی بماند",
+        "is_elective": true
+      },
+      {
+        "title": "پرواز کن پرواز",
+        "is_elective": true
+      },
+      {
+        "title": "من عاقبت از این پل خواهم گذشت",
+        "is_elective": true
+      },
+      {
+        "title": "کیمیاگر",
+        "is_elective": true
+      }
+    ]
+  }
+]

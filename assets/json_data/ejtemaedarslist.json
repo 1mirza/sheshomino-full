@@ -1,0 +1,170 @@
+[
+  {
+    "chapter_number": 1,
+    "chapter_title": "دوستان ما",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "title": "دوستی"
+      },
+      {
+        "lesson_number": 2,
+        "title": "آداب دوستی"
+      }
+    ]
+  },
+  {
+    "chapter_number": 2,
+    "chapter_title": "تصمیم گیری",
+    "lessons": [
+      {
+        "lesson_number": 3,
+        "title": "تصمیم گیری چیست؟"
+      },
+      {
+        "lesson_number": 4,
+        "title": "چگونه تصمیم بگیریم؟"
+      }
+    ]
+  },
+  {
+    "chapter_number": 3,
+    "chapter_title": "کشاورزی در ایران",
+    "lessons": [
+      {
+        "lesson_number": 5,
+        "title": "عوامل مؤثر در کشاورزی"
+      },
+      {
+        "lesson_number": 6,
+        "title": "محصولات کشاورزی از تولید تا مصرف"
+      }
+    ]
+  },
+  {
+    "chapter_number": 4,
+    "chapter_title": "ایران و منابع انرژی",
+    "lessons": [
+      {
+        "lesson_number": 7,
+        "title": "طلای سیاه"
+      },
+      {
+        "lesson_number": 8,
+        "title": "انرژی را بهتر مصرف کنیم"
+      }
+    ]
+  },
+  {
+    "chapter_number": 5,
+    "chapter_title": "پیشرفت علوم و فنون در دوره ی اسلامی",
+    "lessons": [
+      {
+        "lesson_number": 9,
+        "title": "پیشرفت های علمی مسلمانان"
+      },
+      {
+        "lesson_number": 10,
+        "title": "چه عواملی موجب گسترش علوم و فنون در دوره ی اسلامی شد؟"
+      }
+    ]
+  },
+  {
+    "chapter_number": 6,
+    "chapter_title": "سفری به اصفهان",
+    "lessons": [
+      {
+        "lesson_number": 11,
+        "title": "اصفهان نصف جهان"
+      },
+      {
+        "lesson_number": 12,
+        "title": "چرا فرهنگ و هنر در دوره ی صفویه شکوفا شد؟"
+      }
+    ]
+  },
+  {
+    "chapter_number": 7,
+    "chapter_title": "اوقات فراغت",
+    "lessons": [
+      {
+        "lesson_number": 13,
+        "title": "برنامه ی روزانه ی متعادل"
+      },
+      {
+        "lesson_number": 14,
+        "title": "برنامه ریزی برای اوقات فراغت"
+      }
+    ]
+  },
+  {
+    "chapter_number": 8,
+    "chapter_title": "پوشاک ما",
+    "lessons": [
+      {
+        "lesson_number": 15,
+        "title": "انواع لباس"
+      },
+      {
+        "lesson_number": 16,
+        "title": "لباس از تولید تا مصرف"
+      }
+    ]
+  },
+  {
+    "chapter_number": 9,
+    "chapter_title": "دریاهای ایران",
+    "lessons": [
+      {
+        "lesson_number": 17,
+        "title": "ویژگیهای دریاهای ایران"
+      },
+      {
+        "lesson_number": 18,
+        "title": "دریا نعمت خداوندی"
+      }
+    ]
+  },
+  {
+    "chapter_number": 10,
+    "chapter_title": "ایران و همسایگان",
+    "lessons": [
+      {
+        "lesson_number": 19,
+        "title": "همسایگان ما"
+      },
+      {
+        "lesson_number": 20,
+        "title": "مطالعه ی موردی"
+      }
+    ]
+  },
+  {
+    "chapter_number": 11,
+    "chapter_title": "ایستادگی در برابر بیگانگان",
+    "lessons": [
+      {
+        "lesson_number": 21,
+        "title": "استعمار چیست؟"
+      },
+      {
+        "lesson_number": 22,
+        "title": "مبارزه ی مردم ایران با استعمار"
+      }
+    ]
+  },
+  {
+    "chapter_number": 12,
+    "chapter_title": "آزادی خرمشهر",
+    "lessons": [
+      {
+        "lesson_number": 23,
+        "title": "خرمشهر در چنگال دشمن"
+      },
+      {
+        "lesson_number": 24,
+        "title": "خرمشهر در دامان میهن"
+      }
+    ]
+  }
+]

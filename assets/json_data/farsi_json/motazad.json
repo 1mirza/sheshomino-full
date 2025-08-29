@@ -1,0 +1,198 @@
+{
+  "lessons": [
+    {
+      "lesson_number": 1,
+      "lesson_title": "معرفت آفریدگار",
+      "words": [
+        {"word": "هوشیار", "antonym": "ناآگاه"},
+        {"word": "آزار", "antonym": "محبت"},
+        {"word": "هرگز", "antonym": "همیشه"},
+        {"word": "زار", "antonym": "توانا و قوی"},
+        {"word": "غفلت", "antonym": "دانایی"},
+        {"word": "هوشیار", "antonym": "نادان"}
+      ]
+    },
+    {
+      "lesson_number": 2,
+      "lesson_title": "پنجره های شناخت",
+      "words": [
+        {"word": "خالق", "antonym": "مخلوق"},
+        {"word": "عجله", "antonym": "صبر"},
+        {"word": "شباهت", "antonym": "اختلاف"},
+        {"word": "پسندیده", "antonym": "ناپسند"},
+        {"word": "سهل", "antonym": "سخت"},
+        {"word": "محبت", "antonym": "دشمنی"},
+        {"word": "برون", "antonym": "درون"},
+        {"word": "رضایت", "antonym": "نارضایتی"},
+        {"word": "معلوم", "antonym": "پنهان"},
+        {"word": "غفلت", "antonym": "دانایی"}
+      ]
+    },
+    {
+      "lesson_number": 3,
+      "lesson_title": "هوشیاری",
+      "words": [
+        {"word": "کدر", "antonym": "زلال"},
+        {"word": "خالی", "antonym": "پر"},
+        {"word": "به آرامی", "antonym": "بی درنگ"},
+        {"word": "گسسته", "antonym": "متصل"},
+        {"word": "اندک", "antonym": "زیاد"}
+      ]
+    },
+    {
+      "lesson_number": 4,
+      "lesson_title": "داستان من و شما",
+      "words": [
+        {"word": "اندک", "antonym": "زیاد"},
+        {"word": "جاری", "antonym": "ساکن"},
+        {"word": "ظاهر", "antonym": "باطن"},
+        {"word": "طولانی", "antonym": "کوتاه"},
+        {"word": "پیوسته", "antonym": "گسسته"},
+        {"word": "شکست", "antonym": "پیروزی"},
+        {"word": "آغاز", "antonym": "پایان"},
+        {"word": "فراز", "antonym": "فرود"}
+      ]
+    },
+    {
+      "lesson_number": 5,
+      "lesson_title": "هفت خان رستم",
+      "words": [
+        {"word": "آسان", "antonym": "سخت"},
+        {"word": "سرانجام", "antonym": "آغاز"},
+        {"word": "تشنه", "antonym": "سیراب"},
+        {"word": "پیروزی", "antonym": "شکست"},
+        {"word": "قوی پنجه", "antonym": "ضعیف پنجه"},
+        {"word": "زشت", "antonym": "زیبا"},
+        {"word": "وابسته", "antonym": "مستقل"},
+        {"word": "راضی", "antonym": "شاکی"}
+      ]
+    },
+    {
+      "lesson_number": 6,
+      "lesson_title": "ای وطن",
+      "words": [
+        {"word": "غم", "antonym": "شادی"},
+        {"word": "غصه", "antonym": "شادی"},
+        {"word": "زنده", "antonym": "مرده"},
+        {"word": "آزادی", "antonym": "اسارت"},
+        {"word": "صادق", "antonym": "دروغ گو"}
+      ]
+    },
+    {
+      "lesson_number": 8,
+      "lesson_title": "دریاقلی",
+      "words": [
+        {"word": "مهاجم", "antonym": "مدافع"},
+        {"word": "مستقل", "antonym": "وابسته"},
+        {"word": "خوشایند", "antonym": "ناگوار"},
+        {"word": "صعود", "antonym": "سقوط"}
+      ]
+    },
+    {
+      "lesson_number": 9,
+      "lesson_title": "رنج هایی کشیده ام که مپرس",
+      "words": [
+        {"word": "غریب", "antonym": "آشنا"},
+        {"word": "مشرق", "antonym": "مغرب"},
+        {"word": "افزایش", "antonym": "کاهش"},
+        {"word": "مقصد", "antonym": "مبدا"},
+        {"word": "شروع", "antonym": "پایان"},
+        {"word": "شرق", "antonym": "غرب"},
+        {"word": "ظاهر", "antonym": "باطن"},
+        {"word": "پنهان", "antonym": "آشکار"}
+      ]
+    },
+    {
+      "lesson_number": 10,
+      "lesson_title": "عطار و جلال الدین محمد",
+      "words": [
+        {"word": "مهمان", "antonym": "میزبان"},
+        {"word": "بدرقه", "antonym": "استقبال"},
+        {"word": "طلوع", "antonym": "غروب"},
+        {"word": "وارد", "antonym": "خارج"},
+        {"word": "قبلا", "antonym": "بعدا"},
+        {"word": "خداحافظ", "antonym": "سلام"}
+      ]
+    },
+    {
+      "lesson_number": 11,
+      "lesson_title": "شهدا خورشیدند",
+      "words": [
+        {"word": "خارج", "antonym": "داخل"},
+        {"word": "آسان", "antonym": "سخت مشکل"},
+        {"word": "خواب", "antonym": "بیدار"},
+        {"word": "زیبا", "antonym": "زشت"},
+        {"word": "پر", "antonym": "خالی"},
+        {"word": "خیر", "antonym": "شر"},
+        {"word": "فروتنی", "antonym": "غرور"},
+        {"word": "پیاده", "antonym": "سواره"}
+      ]
+    },
+    {
+      "lesson_number": 12,
+      "lesson_title": "دوستی / مشاوره",
+      "words": [
+        {"word": "دشمنان", "antonym": "دوستان"},
+        {"word": "ضعیف", "antonym": "قوی"},
+        {"word": "مظلوم", "antonym": "ظالم"},
+        {"word": "زنده", "antonym": "مرده"},
+        {"word": "کهن", "antonym": "بدیع و نو"},
+        {"word": "دانا", "antonym": "نادان"}
+      ]
+    },
+    {
+      "lesson_number": 14,
+      "lesson_title": "راز زندگی",
+      "words": [
+        {"word": "افزایش", "antonym": "کاهش"},
+        {"word": "خنده", "antonym": "گریه"},
+        {"word": "کمترین", "antonym": "بیشترین"},
+        {"word": "مقصد", "antonym": "مبدا"},
+        {"word": "درون", "antonym": "بیرون"},
+        {"word": "پسندیده", "antonym": "ناپسند"}
+      ]
+    },
+    {
+      "lesson_number": 15,
+      "lesson_title": "میوه ی هنر",
+      "words": [
+        {"word": "فرجام", "antonym": "آغاز"},
+        {"word": "سود", "antonym": "ضرر"},
+        {"word": "آهسته", "antonym": "سریع"},
+        {"word": "آسان", "antonym": "دشوار"},
+        {"word": "بسیار", "antonym": "اندک"}
+      ]
+    },
+    {
+      "lesson_number": 16,
+      "lesson_title": "آداب مطالعه",
+      "words": [
+        {"word": "مجهول", "antonym": "معلوم"},
+        {"word": "عالم", "antonym": "جاهل"},
+        {"word": "دوست", "antonym": "دشمن"},
+        {"word": "خام", "antonym": "پخته"},
+        {"word": "فایده", "antonym": "ضرر زیان"},
+        {"word": "آزاد", "antonym": "اسیر"},
+        {"word": "سبک", "antonym": "سنگین"},
+        {"word": "حاضر", "antonym": "غایب"},
+        {"word": "ملول", "antonym": "شاد"}
+      ]
+    },
+    {
+      "lesson_number": 17,
+      "lesson_title": "ستاره ی روشن",
+      "words": [
+        {"word": "نخست", "antonym": "پایان"},
+        {"word": "بهشت", "antonym": "جهنم"},
+        {"word": "نزدیک", "antonym": "دور"},
+        {"word": "فراوان", "antonym": "اندک"},
+        {"word": "دانا", "antonym": "نادان"},
+        {"word": "عیب", "antonym": "حسن"},
+        {"word": "روشن", "antonym": "تاریک"},
+        {"word": "دروغ گویی", "antonym": "راست گویی"},
+        {"word": "کوتاه", "antonym": "طولانی"},
+        {"word": "حرام", "antonym": "حلال"}
+      ]
+    }
+  ]
+}
