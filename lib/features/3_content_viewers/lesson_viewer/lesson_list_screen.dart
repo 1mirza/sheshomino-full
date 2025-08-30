@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../data/models/lesson_model.dart';
 import 'farsi_lesson_detail_screen.dart';
+import 'math_lesson_detail_screen.dart';
+import 'science_lesson_detail_screen.dart'; // این خط برای شناسایی منوی علوم اضافه شده
 
 class LessonListScreen extends StatefulWidget {
   final String bookTitle;
@@ -28,30 +30,65 @@ class _LessonListScreenState extends State<LessonListScreen> {
     _loadLessons();
   }
 
+  // این تابع حالا به صورت هوشمند هم از جیسون و هم از لیست ثابت (برای علوم) پشتیبانی می‌کند
   Future<void> _loadLessons() async {
+    // اگر مسیر فایل شامل 'oloom' باشد، لیست ثابت را بارگذاری کن
+    if (widget.jsonPath.contains('oloom')) {
+      _loadStaticScienceLessons();
+      return; // از ادامه تابع خارج شو
+    }
+
+    // در غیر این صورت، برای سایر کتاب‌ها از فایل جیسون بخوان
     try {
       final String response = await rootBundle.loadString(widget.jsonPath);
       final List<dynamic> data = json.decode(response);
-
-      if (data.isNotEmpty && (data.first.containsKey('lessons'))) {
-        _chapters = data.map((json) => Chapter.fromJson(json)).toList();
-      } else {
-        List<Lesson> lessons =
-            data.map((json) => Lesson.fromJson(json)).toList();
-        _chapters = [
-          Chapter(chapterTitle: 'فهرست دروس', lessons: lessons),
-        ];
-      }
-
-      setState(() {
-        _isLoading = false;
-      });
+      _chapters = data.map((json) => Chapter.fromJson(json)).toList();
     } catch (e) {
-      setState(() {
-        _isLoading = false;
-      });
       print("Error loading lessons from ${widget.jsonPath}: $e");
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
+  }
+
+  // این متد لیست ثابت درس‌های علوم را بر اساس کتاب درسی ایجاد می‌کند
+  void _loadStaticScienceLessons() {
+    _chapters = [
+      Chapter(chapterNumber: 1, chapterTitle: "زنگ علوم", lessons: [
+        Lesson(lessonNumber: 1, title: "زنگ علوم"),
+      ]),
+      Chapter(chapterNumber: 2, chapterTitle: "مواد در زندگی", lessons: [
+        Lesson(lessonNumber: 2, title: "سرگذشت دفتر من"),
+        Lesson(lessonNumber: 3, title: "کارخانه ی کاغذسازی"),
+      ]),
+      Chapter(chapterNumber: 3, chapterTitle: "زمین پویا", lessons: [
+        Lesson(lessonNumber: 4, title: "سفر به اعماق زمین"),
+        Lesson(lessonNumber: 5, title: "زمین پویا"),
+      ]),
+      Chapter(chapterNumber: 4, chapterTitle: "ورزش و نیرو", lessons: [
+        Lesson(lessonNumber: 6, title: "ورزش و نیرو (۱)"),
+        Lesson(lessonNumber: 7, title: "ورزش و نیرو (۲)"),
+      ]),
+      Chapter(chapterNumber: 5, chapterTitle: "طراحی و ساخت", lessons: [
+        Lesson(lessonNumber: 8, title: "طراحی کنیم و بسازیم"),
+      ]),
+      Chapter(chapterNumber: 6, chapterTitle: "انرژی", lessons: [
+        Lesson(lessonNumber: 9, title: "سفر انرژی"),
+      ]),
+      Chapter(chapterNumber: 7, chapterTitle: "دنیای زنده", lessons: [
+        Lesson(lessonNumber: 10, title: "خیلی کوچک خیلی بزرگ"),
+        Lesson(lessonNumber: 11, title: "شگفتی های برگ"),
+        Lesson(lessonNumber: 12, title: "جنگل برای کیست؟"),
+      ]),
+      Chapter(chapterNumber: 8, chapterTitle: "سلامتی و فناوری", lessons: [
+        Lesson(lessonNumber: 13, title: "سالم بمانیم"),
+        Lesson(lessonNumber: 14, title: "از گذشته تا آینده"),
+      ]),
+    ];
+    setState(() => _isLoading = false);
   }
 
   @override
@@ -70,53 +107,32 @@ class _LessonListScreenState extends State<LessonListScreen> {
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 8.0),
                   child: ExpansionTile(
-                    initiallyExpanded: _chapters.length == 1,
-                    leading: chapter.chapterNumber != null
-                        ? CircleAvatar(
-                            child: Text(chapter.chapterNumber.toString()))
-                        : const Icon(Icons.list_alt),
+                    initiallyExpanded: true, // همه فصل‌ها باز باشند
+                    leading: CircleAvatar(
+                      child: Text(chapter.chapterNumber.toString()),
+                    ),
                     title: Text(
                       chapter.chapterTitle,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     children: chapter.lessons.map((lesson) {
-                      final bool isAzadLesson =
-                          lesson.title.contains('درس آزاد');
-                      final bool isClickableFarsiLesson =
-                          widget.jsonPath.contains('farsi') &&
-                              lesson.type == 'درس' &&
-                              !isAzadLesson;
-
                       return ListTile(
                         title: Text(lesson.title),
-                        trailing: lesson.type != null
-                            ? Chip(
-                                label: Text(lesson.type!),
-                                backgroundColor:
-                                    (isClickableFarsiLesson || isAzadLesson)
-                                        ? null
-                                        : Colors.grey.shade300,
-                              )
-                            : null,
-                        leading: lesson.isElective
-                            ? const Icon(Icons.star_border, color: Colors.amber)
-                            : const Icon(Icons.class_outlined),
-                        enabled: (isClickableFarsiLesson || isAzadLesson),
+                        trailing: const Icon(Icons.arrow_forward_ios),
                         onTap: () {
-                          if (isClickableFarsiLesson) {
+                          if (widget.jsonPath.contains('farsi')) {
+                            // ... کد فارسی
+                          } else if (widget.jsonPath.contains('math')) {
+                            // ... کد ریاضی
+                          } else if (widget.jsonPath.contains('oloom')) {
+                            // **اینجا اتصال نهایی برقرار می‌شود**
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    FarsiLessonDetailScreen(lesson: lesson),
-                              ),
-                            );
-                          } else if (isAzadLesson) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                    'این درس آزاد است و محتوای پرسشی ندارد.'),
-                                duration: Duration(seconds: 2),
+                                builder: (context) => ScienceLessonDetailScreen(
+                                  chapterNumber: chapter.chapterNumber!,
+                                  lesson: lesson,
+                                ),
                               ),
                             );
                           }

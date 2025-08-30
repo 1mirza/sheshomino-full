@@ -1,0 +1,92 @@
+[
+  {
+    "chapter_number": 1,
+    "chapter_title": "عدد و الگوهای عددی",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "title": "الگوهای عددی",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "در الگوی عددی ... ,۱۱ ,۸ ,۵ ,۲ عدد بعدی کدام است؟",
+            "options": ["۱۳", "۱۴", "۱۵", "۱۲"],
+            "correct_answer": "۱۴"
+          },
+          {
+            "question_number": 2,
+            "question_text": "جمع یک عدد زوج با یک عدد فرد همیشه چه عددی است؟",
+            "options": ["زوج", "فرد", "بستگی دارد", "ممکن است زوج یا فرد باشد"],
+            "correct_answer": "فرد"
+          },
+          {
+            "question_number": 3,
+            "question_text": "کدام یک از اعداد زیر مضرب ۷ نیست؟",
+            "options": ["۲۱", "۳۵", "۴۷", "۶۳"],
+            "correct_answer": "۴۷"
+          }
+        ]
+      },
+      {
+        "lesson_number": 2,
+        "title": "یادآوری عدد نویسی",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "عدد 'پنج میلیارد و بیست و سه میلیون و چهارصد' به رقم کدام است؟",
+            "options": [
+              "۵,۰۲۳,۰۰۰,۴۰۰",
+              "۵,۲۳۰,۰۰۰,۴۰۰",
+              "۵,۰۰۰,۲۳۰,۴۰۰",
+              "۵,۰۲۳,۴۰۰,۰۰۰"
+            ],
+            "correct_answer": "۵,۰۲۳,۰۰۰,۴۰۰"
+          },
+          {
+            "question_number": 2,
+            "question_text": "در عدد ۱,۲۳۴,۵۶۷,۸۹۰ ارزش مکانی رقم ۲ چیست؟",
+            "options": ["صدگان میلیون", "دهگان میلیون", "یکان میلیارد", "صدگان هزار"],
+            "correct_answer": "صدگان میلیون"
+          }
+        ]
+      },
+      {
+        "lesson_number": 3,
+        "title": "بخش پذیری",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "کدام عدد بر ۶ بخش‌پذیر است؟",
+            "options": ["۱۲۴", "۳۲۱", "۴۵۶", "۷۳۴"],
+            "correct_answer": "۴۵۶"
+          },
+          {
+            "question_number": 2,
+            "question_text": "برای اینکه عدد ۱۲□ بر ۹ بخش‌پذیر باشد، در جای خالی چه رقمی باید قرار گیرد؟",
+            "options": ["۳", "۵", "۶", "۹"],
+            "correct_answer": "۶"
+          }
+        ]
+      },
+      {
+        "lesson_number": 4,
+        "title": "معرفی اعداد صحیح",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "قرینه عدد ۱۲- کدام است؟",
+            "options": ["۱۲+", "۰", "۱۲-", "۱/۱۲"],
+            "correct_answer": "۱۲+"
+          },
+          {
+            "question_number": 2,
+            "question_text": "کدام یک از مقایسه‌های زیر نادرست است؟",
+            "options": ["-۵ < -۲", "۰ > -۱۰", "-۸ > -۴", "+۳ > -۱۰۰"],
+            "correct_answer": "-۸ > -۴"
+          }
+        ]
+      }
+    ]
+  }
+]
+

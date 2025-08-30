@@ -5,6 +5,10 @@ import '../../../data/repositories/user_repository.dart';
 import '../farsi_content_viewer/word_antonym_game_screen.dart';
 import '../farsi_content_viewer/word_family_game_screen.dart';
 import '../farsi_content_viewer/word_meaning_game_screen.dart';
+import '../farsi_content_viewer/word_spelling_game_screen.dart';
+// <<<<< اصلاحیه: فایل‌های بازی جدید در اینجا اضافه شدند >>>>>
+import '../farsi_content_viewer/text_lesson_game_screen.dart';
+import '../farsi_content_viewer/negaresh_game_screen.dart';
 
 class FarsiLessonDetailScreen extends StatelessWidget {
   final Lesson lesson;
@@ -12,10 +16,8 @@ class FarsiLessonDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // <<<<< شروع اصلاحات: خواندن نام کاربر از مدیر پروفایل >>>>>
     final userRepo = Provider.of<UserRepository>(context, listen: false);
     final userName = userRepo.userProfile?.name ?? "دانش‌آموز";
-    // <<<<< پایان اصلاحات >>>>>
 
     final List<Map<String, dynamic>> options = [
       {'title': 'معنی کلمات', 'icon': Icons.translate, 'page': 'meaning'},
@@ -29,9 +31,17 @@ class FarsiLessonDetailScreen extends StatelessWidget {
         'icon': Icons.compare_arrows_outlined,
         'page': 'antonym'
       },
-      {'title': 'کلمات مهم املایی', 'icon': Icons.spellcheck, 'page': null},
-      {'title': 'متن درس', 'icon': Icons.article_outlined, 'page': null},
-      {'title': 'نگارش', 'icon': Icons.edit_outlined, 'page': null},
+      {
+        'title': 'کلمات مهم املایی',
+        'icon': Icons.spellcheck,
+        'page': 'spelling'
+      },
+      {
+        'title': 'متن درس',
+        'icon': Icons.article_outlined,
+        'page': 'text_lesson'
+      },
+      {'title': 'نگارش', 'icon': Icons.edit_outlined, 'page': 'negaresh'},
     ];
 
     return Scaffold(
@@ -56,41 +66,47 @@ class FarsiLessonDetailScreen extends StatelessWidget {
               onTap: () {
                 if (lesson.lessonNumber == null) return;
 
-                if (option['page'] == 'meaning') {
+                Widget? destination;
+                switch (option['page']) {
+                  case 'meaning':
+                    destination = WordMeaningGameScreen(
+                        lessonNumber: lesson.lessonNumber!, userName: userName);
+                    break;
+                  case 'family':
+                    destination = WordFamilyGameScreen(
+                        lessonNumber: lesson.lessonNumber!, userName: userName);
+                    break;
+                  case 'antonym':
+                    destination = WordAntonymGameScreen(
+                        lessonNumber: lesson.lessonNumber!, userName: userName);
+                    break;
+                  case 'spelling':
+                    destination = WordSpellingGameScreen(
+                        lessonNumber: lesson.lessonNumber!, userName: userName);
+                    break;
+                  case 'text_lesson':
+                    destination = TextLessonGameScreen(
+                        lessonNumber: lesson.lessonNumber!, userName: userName);
+                    break;
+                  case 'negaresh':
+                    destination = NegareshGameScreen(
+                        lessonNumber: lesson.lessonNumber!, userName: userName);
+                    break;
+                  default:
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('این بخش هنوز آماده نشده است.'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                    break;
+                }
+
+                if (destination != null) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => WordMeaningGameScreen(
-                        // <<<<< اصلاح شد: ارسال شماره درس و نام کاربر >>>>>
-                        lessonNumber: lesson.lessonNumber!,
-                        userName: userName,
-                      ),
-                    ),
+                    MaterialPageRoute(builder: (context) => destination!),
                   );
-                } else if (option['page'] == 'family') {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WordFamilyGameScreen(
-                        // <<<<< اصلاح شد: ارسال شماره درس و نام کاربر >>>>>
-                        lessonNumber: lesson.lessonNumber!,
-                        userName: userName,
-                      ),
-                    ),
-                  );
-                } else if (option['page'] == 'antonym') {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WordAntonymGameScreen(
-                        // <<<<< اصلاح شد: ارسال شماره درس و نام کاربر >>>>>
-                        lessonNumber: lesson.lessonNumber!,
-                        userName: userName,
-                      ),
-                    ),
-                  );
-                } else {
-                  print('${option['title']} tapped - No page yet.');
                 }
               },
             ),
