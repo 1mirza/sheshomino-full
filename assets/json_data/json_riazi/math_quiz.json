@@ -21,9 +21,21 @@
           },
           {
             "question_number": 3,
+            "question_text": "رابطه بین شماره شکل و تعداد دایره‌ها در الگوی «شماره شکل × شماره شکل» است. شکل پنجم چند دایره دارد؟",
+            "options": ["۱۰", "۲۰", "۲۵", "۱۵"],
+            "correct_answer": "۲۵"
+          },
+          {
+            "question_number": 4,
             "question_text": "کدام یک از اعداد زیر مضرب ۷ نیست؟",
             "options": ["۲۱", "۳۵", "۴۷", "۶۳"],
             "correct_answer": "۴۷"
+          },
+          {
+            "question_number": 5,
+            "question_text": "حاصل جمع دو عدد زوج همیشه عددی ... است.",
+            "options": ["فرد", "زوج", "اول", "منفی"],
+            "correct_answer": "زوج"
           }
         ]
       },
@@ -47,6 +59,24 @@
             "question_text": "در عدد ۱,۲۳۴,۵۶۷,۸۹۰ ارزش مکانی رقم ۲ چیست؟",
             "options": ["صدگان میلیون", "دهگان میلیون", "یکان میلیارد", "صدگان هزار"],
             "correct_answer": "صدگان میلیون"
+          },
+          {
+            "question_number": 3,
+            "question_text": "کدام عدد بزرگتر است؟",
+            "options": ["۹,۸۷۶,۵۴۳", "۱۰,۰۰۰,۰۰۰", "۹,۹۹۹,۹۹۹", "۸,۹۹۹,۹۹۹"],
+            "correct_answer": "۱۰,۰۰۰,۰۰۰"
+          },
+          {
+            "question_number": 4,
+            "question_text": "کوچکترین عدد شش رقمی زوج که با ارقام ۰, ۱, ۲, ۳, ۴, ۵ می‌توان ساخت کدام است؟ (ارقام تکراری نباشند)",
+            "options": ["۱۰۲۳۴۵", "۱۰۲۳۵۴", "۵۴۳۲۱۰", "۱۰۳۲۵۴"],
+            "correct_answer": "۱۰۲۳۵۴"
+          },
+          {
+            "question_number": 5,
+            "question_text": "عدد ۷۸,۴۵۶ با تقریب یکان هزار کدام است؟",
+            "options": ["۷۸۰۰۰", "۷۹۰۰۰", "۷۸۵۰۰", "۸۰۰۰۰"],
+            "correct_answer": "۷۸۰۰۰"
           }
         ]
       },
@@ -65,6 +95,24 @@
             "question_text": "برای اینکه عدد ۱۲□ بر ۹ بخش‌پذیر باشد، در جای خالی چه رقمی باید قرار گیرد؟",
             "options": ["۳", "۵", "۶", "۹"],
             "correct_answer": "۶"
+          },
+          {
+            "question_number": 3,
+            "question_text": "کدام عدد بر ۳ بخش‌پذیر است ولی بر ۹ بخش‌پذیر نیست؟",
+            "options": ["۱۸", "۲۷", "۱۲", "۳۶"],
+            "correct_answer": "۱۲"
+          },
+          {
+            "question_number": 4,
+            "question_text": "عددی که رقم یکان آن ۰ یا ۵ باشد، حتما بر چه عددی بخش‌پذیر است؟",
+            "options": ["۲", "۳", "۵", "۱۰"],
+            "correct_answer": "۵"
+          },
+          {
+            "question_number": 5,
+            "question_text": "کدام عدد هم بر ۲ و هم بر ۵ بخش‌پذیر است؟",
+            "options": ["۲۵", "۵۲", "۷۰", "۱۵"],
+            "correct_answer": "۷۰"
           }
         ]
       },
@@ -83,6 +131,852 @@
             "question_text": "کدام یک از مقایسه‌های زیر نادرست است؟",
             "options": ["-۵ < -۲", "۰ > -۱۰", "-۸ > -۴", "+۳ > -۱۰۰"],
             "correct_answer": "-۸ > -۴"
+          },
+          {
+            "question_number": 3,
+            "question_text": "دمای هوا از ۵- درجه به ۳+ درجه رسیده است. دما چند درجه تغییر کرده است؟",
+            "options": ["۲ درجه افزایش", "۸ درجه افزایش", "۲ درجه کاهش", "۸ درجه کاهش"],
+            "correct_answer": "۸ درجه افزایش"
+          },
+          {
+            "question_number": 4,
+            "question_text": "کدام گزینه اعداد را از کوچک به بزرگ مرتب کرده است؟",
+            "options": ["-۵, -۲, ۰, +۱", "۰, +۱, -۲, -۵", "-۲, -۵, ۰, +۱", "+۱, ۰, -۲, -۵"],
+            "correct_answer": "-۵, -۲, ۰, +۱"
+          },
+          {
+            "question_number": 5,
+            "question_text": "از نقطه ۳- روی محور، ۴ واحد به سمت راست حرکت می‌کنیم. به چه عددی می‌رسیم؟",
+            "options": ["-۷", "+۱", "-۱", "+۷"],
+            "correct_answer": "+۱"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chapter_number": 2,
+    "chapter_title": "کسر",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "title": "جمع و تفریق کسرها",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "حاصل جمع ۱/۳ + ۱/۴ کدام است؟",
+            "options": ["۲/۷", "۱/۱۲", "۷/۱۲", "۲/۱۲"],
+            "correct_answer": "۷/۱۲"
+          },
+          {
+            "question_number": 2,
+            "question_text": "برای تفریق دو کسر با مخرج‌های متفاوت، اولین قدم چیست؟",
+            "options": ["کم کردن صورت‌ها", "کم کردن مخرج‌ها", "پیدا کردن مخرج مشترک", "ساده کردن کسرها"],
+            "correct_answer": "پیدا کردن مخرج مشترک"
+          },
+          {
+            "question_number": 3,
+            "question_text": "حاصل تفریق ۲ و ۱/۲ منهای ۱ و ۱/۴ کدام است؟",
+            "options": ["۱ و ۱/۴", "۳/۴", "۱", "۱ و ۱/۲"],
+            "correct_answer": "۱ و ۱/۴"
+          },
+          {
+            "question_number": 4,
+            "question_text": "سارا ۱/۲ کیک و مریم ۱/۴ کیک را خوردند. چه کسری از کیک خورده شده است؟",
+            "options": ["۱/۶", "۲/۶", "۳/۸", "۳/۴"],
+            "correct_answer": "۳/۴"
+          },
+          {
+            "question_number": 5,
+            "question_text": "حاصل ۱ منهای ۳/۵ چقدر است؟",
+            "options": ["۲/۵", "۱/۵", "۳/۴", "منفی است"],
+            "correct_answer": "۲/۵"
+          }
+        ]
+      },
+      {
+        "lesson_number": 2,
+        "title": "ضرب کسرها",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "حاصل ضرب ۲/۳ × ۳/۴ کدام است؟",
+            "options": ["۶/۷", "۱/۲", "۵/۷", "۶/۱۲"],
+            "correct_answer": "۱/۲"
+          },
+          {
+            "question_number": 2,
+            "question_text": "معکوس کسر ۲/۵ کدام است؟",
+            "options": ["۵/۲", "۲/۵-", "۲.۵", "-۵/۲"],
+            "correct_answer": "۵/۲"
+          },
+          {
+            "question_number": 3,
+            "question_text": "حاصل ضرب ۱ و ۱/۲ در ۲/۳ کدام است؟",
+            "options": ["۱", "۲/۶", "۱ و ۲/۶", "۳/۵"],
+            "correct_answer": "۱"
+          },
+          {
+            "question_number": 4,
+            "question_text": "۱/۲ از ۲/۳ یک زمین کشاورزی گندم است. چه کسری از کل زمین گندم است؟",
+            "options": ["۱/۳", "۳/۵", "۱/۶", "۱/۵"],
+            "correct_answer": "۱/۳"
+          },
+          {
+            "question_number": 5,
+            "question_text": "حاصل ۸ × ۳/۴ کدام است؟",
+            "options": ["۲۴/۴", "۶", "۲۴/۳۲", "۲"],
+            "correct_answer": "۶"
+          }
+        ]
+      },
+      {
+        "lesson_number": 3,
+        "title": "تقسیم کسرها",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "حاصل تقسیم ۱/۲ ÷ ۱/۴ کدام است؟",
+            "options": ["۱/۸", "۲", "۸", "۱/۲"],
+            "correct_answer": "۲"
+          },
+          {
+            "question_number": 2,
+            "question_text": "حاصل ۶ تقسیم بر ۱/۳ کدام است؟",
+            "options": ["۲", "۱۸", "۶/۳", "۳/۶"],
+            "correct_answer": "۱۸"
+          },
+          {
+            "question_number": 3,
+            "question_text": "حاصل ۳/۴ تقسیم بر ۲ کدام است؟",
+            "options": ["۳/۲", "۶/۴", "۳/۸", "۱.۵"],
+            "correct_answer": "۳/۸"
+          },
+          {
+            "question_number": 4,
+            "question_text": "حاصل تقسیم ۲ و ۱/۲ بر ۱ و ۱/۴ کدام است؟",
+            "options": ["۲", "۳", "۱/۲", "۲۵/۸"],
+            "correct_answer": "۲"
+          },
+          {
+            "question_number": 5,
+            "question_text": "یک نوار ۵ متری را به قطعات ۱/۲ متری تقسیم کرده‌ایم. چند قطعه نوار داریم؟",
+            "options": ["۵", "۲.۵", "۱۰", "۱۵"],
+            "correct_answer": "۱۰"
+          }
+        ]
+      },
+      {
+        "lesson_number": 4,
+        "title": "محاسبات با کسر",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "در عبارت ۱/۲ + ۱/۳ × ۱/۴ کدام عمل را باید اول انجام داد؟",
+            "options": ["جمع", "تفریق", "ضرب", "فرقی نمی‌کند"],
+            "correct_answer": "ضرب"
+          },
+          {
+            "question_number": 2,
+            "question_text": "حاصل عبارت (۱/۲ + ۱/۴) ÷ ۳/۴ کدام است؟",
+            "options": ["۱", "۳/۴", "۴/۳", "۹/۱۶"],
+            "correct_answer": "۱"
+          },
+          {
+            "question_number": 3,
+            "question_text": "حاصل (۲ - ۱/۳) × ۳ کدام است؟",
+            "options": ["۵", "۶", "۱", "۵/۳"],
+            "correct_answer": "۵"
+          },
+          {
+            "question_number": 4,
+            "question_text": "کدام کسر از بقیه بزرگتر است؟",
+            "options": ["۱/۲", "۳/۴", "۲/۵", "۵/۸"],
+            "correct_answer": "۳/۴"
+          },
+          {
+            "question_number": 5,
+            "question_text": "علی ۱/۳ پولش را خرج کرد و ۱/۲ باقی‌مانده را به برادرش داد. اگر ۲۰۰۰ تومان برایش مانده باشد، کل پولش چقدر بوده؟",
+            "options": ["۶۰۰۰", "۸۰۰۰", "۱۰۰۰۰", "۱۲۰۰۰"],
+            "correct_answer": "۶۰۰۰"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chapter_number": 3,
+    "chapter_title": "اعداد اعشاری",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "title": "یادآوری اعداد اعشاری",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "کسر ۳/۴ به صورت اعشاری کدام است؟",
+            "options": ["۰.۳۴", "۰.۷۵", "۳.۴", "۰.۰۷۵"],
+            "correct_answer": "۰.۷۵"
+          },
+          {
+            "question_number": 2,
+            "question_text": "عدد اعشاری ۱.۲۵ به صورت کسر کدام است؟",
+            "options": ["۱۲۵/۱۰", "۵/۴", "۱/۴", "۱۲/۵"],
+            "correct_answer": "۵/۴"
+          },
+          {
+            "question_number": 3,
+            "question_text": "در عدد ۳۲.۱۴۵، رقم ۴ چه ارزشی دارد؟",
+            "options": ["دهم", "صدم", "هزارم", "دهگان"],
+            "correct_answer": "صدم"
+          },
+          {
+            "question_number": 4,
+            "question_text": "کدام مقایسه درست است؟",
+            "options": ["۰.۵ < ۰.۱۲۵", "۲.۱ > ۲.۰۹", "۰.۰۷ = ۰.۷۰", "۳.۴ > ۴.۳"],
+            "correct_answer": "۲.۱ > ۲.۰۹"
+          },
+          {
+            "question_number": 5,
+            "question_text": "کدام عدد از بقیه کوچکتر است؟",
+            "options": ["۰.۱", "۰.۰۹", "۰.۱۲", "۰.۱۰۱"],
+            "correct_answer": "۰.۰۹"
+          }
+        ]
+      },
+      {
+        "lesson_number": 2,
+        "title": "یادآوری ضرب و تقسیم",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "حاصل ۰/۲ × ۰/۳ کدام است؟",
+            "options": ["۰/۶", "۰.۰۶", "۶", "۰.۰۰۶"],
+            "correct_answer": "۰.۰۶"
+          },
+          {
+            "question_number": 2,
+            "question_text": "حاصل ۱.۲۳ × ۱۰۰ کدام است؟",
+            "options": ["۱.۲۳۰۰", "۱۲.۳", "۱۲۳", "۱۲۳۰"],
+            "correct_answer": "۱۲۳"
+          },
+          {
+            "question_number": 3,
+            "question_text": "حاصل ۴۵.۶ ÷ ۱۰ کدام است؟",
+            "options": ["۴۵۶", "۰.۴۵۶", "۴.۵۶", "۴۵۶۰"],
+            "correct_answer": "۴.۵۶"
+          },
+          {
+            "question_number": 4,
+            "question_text": "حاصل ضرب ۱/۵ × ۰/۴ کدام است؟",
+            "options": ["۰.۶", "۶", "۰.۰۶", "۰.۶۰"],
+            "correct_answer": "۰.۶"
+          },
+          {
+            "question_number": 5,
+            "question_text": "قیمت هر کیلو سیب ۲۰.۵ هزار تومان است. قیمت ۳ کیلو سیب چقدر می‌شود؟",
+            "options": ["۶۰.۵", "۶۱.۵", "۶۰۰.۱۵", "۶.۱۵"],
+            "correct_answer": "۶۱.۵"
+          }
+        ]
+      },
+      {
+        "lesson_number": 3,
+        "title": "تقسیم عدد اعشاری بر عدد طبیعی",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "حاصل ۸/۴ ÷ ۲ کدام است؟",
+            "options": ["۴۲", "۴/۲", "۰/۴۲", "۸/۲"],
+            "correct_answer": "۴/۲"
+          },
+          {
+            "question_number": 2,
+            "question_text": "در تقسیم ۷.۵ بر ۳، باقیمانده چند است؟",
+            "options": ["۰", "۱.۵", "۰.۵", "۱"],
+            "correct_answer": "۰"
+          },
+          {
+            "question_number": 3,
+            "question_text": "حاصل ۰.۱۵ ÷ ۵ کدام است؟",
+            "options": ["۰.۳", "۰.۰۳", "۳", "۰.۰۰۳"],
+            "correct_answer": "۰.۰۳"
+          },
+          {
+            "question_number": 4,
+            "question_text": "یک روبان به طول ۹.۶ متر را به طور مساوی بین ۳ نفر تقسیم می‌کنیم. به هر نفر چند متر روبان می‌رسد؟",
+            "options": ["۳.۲", "۳۲", "۰.۳۲", "۳.۰۲"],
+            "correct_answer": "۳.۲"
+          },
+          {
+            "question_number": 5,
+            "question_text": "حاصل ۰.۰۸ ÷ ۴ کدام است؟",
+            "options": ["۰.۲", "۰.۰۰۲", "۰.۰۲", "۲"],
+            "correct_answer": "۰.۰۲"
+          }
+        ]
+      },
+      {
+        "lesson_number": 4,
+        "title": "تقسیم یک عدد بر عدد اعشاری",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "برای حل تقسیم ۹/۳ ÷ ۰/۰۳، مقسوم و مقسوم علیه را در چه عددی ضرب می‌کنیم؟",
+            "options": ["۱۰", "۱۰۰۰", "۱۰۰", "نیازی نیست"],
+            "correct_answer": "۱۰۰"
+          },
+          {
+            "question_number": 2,
+            "question_text": "حاصل ۱۲ ÷ ۰.۵ کدام است؟",
+            "options": ["۶", "۲.۴", "۲۴", "۶۰"],
+            "correct_answer": "۲۴"
+          },
+          {
+            "question_number": 3,
+            "question_text": "یک بطری ۱.۵ لیتری را با لیوان‌های ۰.۳ لیتری پر می‌کنیم. چند لیوان لازم است؟",
+            "options": ["۵", "۵۰", "۰.۵", "۱۵"],
+            "correct_answer": "۵"
+          },
+          {
+            "question_number": 4,
+            "question_text": "حاصل ۴.۸ ÷ ۱.۲ کدام است؟",
+            "options": ["۴", "۰.۴", "۴۰", "۰.۰۴"],
+            "correct_answer": "۴"
+          },
+          {
+            "question_number": 5,
+            "question_text": "برای حل تقسیم بر ۰.۲، آن را به تقسیم بر ۲ تبدیل می‌کنیم و مقسوم را ...",
+            "options": ["در ۱۰ ضرب می‌کنیم", "بر ۱۰ تقسیم می‌کنیم", "تغییری نمی‌دهیم", "در ۱۰۰ ضرب می‌کنیم"],
+            "correct_answer": "در ۱۰ ضرب می‌کنیم"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chapter_number": 4,
+    "chapter_title": "تقارن و مختصات",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "title": "مرکز تقارن و تقارن مرکزی",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "کدام شکل مرکز تقارن دارد؟",
+            "options": ["مثلث متساوی‌الاضلاع", "ذوزنقه متساوی‌الساقین", "مستطیل", "مثلث قائم‌الزاویه"],
+            "correct_answer": "مستطیل"
+          },
+          {
+            "question_number": 2,
+            "question_text": "تقارن مرکزی، معادل دوران به چه زاویه‌ای است؟",
+            "options": ["۹۰ درجه", "۱۸۰ درجه", "۲۷۰ درجه", "۳۶۰ درجه"],
+            "correct_answer": "۱۸۰ درجه"
+          },
+          {
+            "question_number": 3,
+            "question_text": "قرینه نقطه [۱, ۲] نسبت به مبدا مختصات کدام است؟",
+            "options": ["[-۱, -۲]", "[۱, -۲]", "[-۱, ۲]", "[۲, ۱]"],
+            "correct_answer": "[-۱, -۲]"
+          },
+          {
+            "question_number": 4,
+            "question_text": "کدام حرف انگلیسی مرکز تقارن دارد؟",
+            "options": ["A", "B", "S", "T"],
+            "correct_answer": "S"
+          },
+          {
+            "question_number": 5,
+            "question_text": "اگر شکلی مرکز تقارن داشته باشد، با دوران ۱۸۰ درجه حول آن مرکز ...",
+            "options": ["جابجا می‌شود", "قرینه می‌شود", "روی خودش منطبق می‌شود", "کوچکتر می‌شود"],
+            "correct_answer": "روی خودش منطبق می‌شود"
+          }
+        ]
+      },
+      {
+        "lesson_number": 2,
+        "title": "دوران",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "اگر یک مربع را حول مرکزش ۹۰ درجه بچرخانیم، چه اتفاقی می‌افتد؟",
+            "options": ["روی خودش منطبق می‌شود", "به یک لوزی تبدیل می‌شود", "جابجا می‌شود", "نصف می‌شود"],
+            "correct_answer": "روی خودش منطبق می‌شود"
+          },
+          {
+            "question_number": 2,
+            "question_text": "دوران ۱۸۰ درجه یک نقطه حول مبدا مختصات، معادل چیست؟",
+            "options": ["تقارن نسبت به محور طول‌ها", "تقارن نسبت به محور عرض‌ها", "تقارن مرکزی نسبت به مبدا", "انتقال"],
+            "correct_answer": "تقارن مرکزی نسبت به مبدا"
+          },
+          {
+            "question_number": 3,
+            "question_text": "اگر نقطه [۳, ۱] را ۹۰ درجه ساعتگرد حول مبدا بچرخانیم، به کدام نقطه می‌رسیم؟",
+            "options": ["[-۱, ۳]", "[۱, -۳]", "[-۳, -۱]", "[۱, ۳]"],
+            "correct_answer": "[۱, -۳]"
+          },
+          {
+            "question_number": 4,
+            "question_text": "کدام شکل با دوران ۱۲۰ درجه حول مرکزش روی خودش منطبق می‌شود؟",
+            "options": ["مربع", "مستطیل", "مثلث متساوی‌الاضلاع", "لوزی"],
+            "correct_answer": "مثلث متساوی‌الاضلاع"
+          },
+          {
+            "question_number": 5,
+            "question_text": "دوران ۲۷۰ درجه ساعتگرد معادل دوران ... پادساعتگرد است.",
+            "options": ["۹۰ درجه", "۱۸۰ درجه", "۲۷۰ درجه", "۳۶۰ درجه"],
+            "correct_answer": "۹۰ درجه"
+          }
+        ]
+      },
+      {
+        "lesson_number": 3,
+        "title": "محورهای مختصات",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "برای نمایش نقطه [۴, ۲] روی محور مختصات، چگونه حرکت می‌کنیم؟",
+            "options": ["۴ واحد بالا، ۲ واحد راست", "۴ واحد راست، ۲ واحد بالا", "۴ واحد چپ، ۲ واحد پایین", "۲ واحد راست، ۴ واحد بالا"],
+            "correct_answer": "۴ واحد راست، ۲ واحد بالا"
+          },
+          {
+            "question_number": 2,
+            "question_text": "نقطه‌ای با مختصات [۰, ۵] در کجا قرار دارد؟",
+            "options": ["روی محور طول‌ها", "روی محور عرض‌ها", "در مبدا مختصات", "در ربع اول"],
+            "correct_answer": "روی محور عرض‌ها"
+          },
+          {
+            "question_number": 3,
+            "question_text": "مبدا مختصات کدام نقطه است؟",
+            "options": ["[۱, ۱]", "[۰, ۰]", "[۰, ۱]", "[۱, ۰]"],
+            "correct_answer": "[۰, ۰]"
+          },
+          {
+            "question_number": 4,
+            "question_text": "سه راس یک مستطیل [۱, ۱]، [۱, ۳] و [۵, ۱] هستند. مختصات راس چهارم چیست؟",
+            "options": ["[۳, ۵]", "[۵, ۳]", "[۱, ۵]", "[۳, ۱]"],
+            "correct_answer": "[۵, ۳]"
+          },
+          {
+            "question_number": 5,
+            "question_text": "اگر نقطه [۲, ۳] را ۳ واحد به راست و ۱ واحد به پایین منتقل کنیم، به چه نقطه‌ای می‌رسیم؟",
+            "options": ["[۵, ۲]", "[-۱, ۲]", "[۵, ۴]", "[-۱, ۴]"],
+            "correct_answer": "[۵, ۲]"
+          }
+        ]
+      },
+      {
+        "lesson_number": 4,
+        "title": "تقارن و مختصات",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "قرینه نقطه [۲, ۴] نسبت به محور طول‌ها کدام است؟",
+            "options": ["[-۲, ۴]", "[۲, -۴]", "[-۲, -۴]", "[۴, ۲]"],
+            "correct_answer": "[۲, -۴]"
+          },
+          {
+            "question_number": 2,
+            "question_text": "قرینه نقطه [۳, -۱] نسبت به محور عرض‌ها کدام است؟",
+            "options": ["[-۳, -۱]", "[۳, ۱]", "[-۳, ۱]", "[-۱, ۳]"],
+            "correct_answer": "[-۳, -۱]"
+          },
+          {
+            "question_number": 3,
+            "question_text": "اگر مثلثی با رئوس [۱,۱]، [۱,۳]، [۴,۱] را نسبت به محور طول‌ها قرینه کنیم، مختصات رئوس جدید چه می‌شود؟",
+            "options": ["[۱,-۱], [۱,-۳], [۴,-۱]", "[-۱,۱], [-۱,۳], [-۴,۱]", "[-۱,-۱], [-۱,-۳], [-۴,-۱]", "[۱,۱], [۳,۱], [۱,۴]"],
+            "correct_answer": "[۱,-۱], [۱,-۳], [۴,-۱]"
+          },
+          {
+            "question_number": 4,
+            "question_text": "در تقارن نسبت به محور طول‌ها، کدام مولفه تغییر علامت می‌دهد؟",
+            "options": ["طول", "عرض", "هر دو", "هیچ‌کدام"],
+            "correct_answer": "عرض"
+          },
+          {
+            "question_number": 5,
+            "question_text": "قرینه نقطه [-۵, -۶] نسبت به مبدا مختصات کدام است؟",
+            "options": ["[۵, ۶]", "[-۵, ۶]", "[۵, -۶]", "[۶, ۵]"],
+            "correct_answer": "[۵, ۶]"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chapter_number": 5,
+    "chapter_title": "اندازه گیری",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "title": "طول و سطح",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "یک متر مربع چند سانتی‌متر مربع است؟",
+            "options": ["۱۰۰", "۱۰۰۰", "۱۰,۰۰۰", "۱,۰۰۰,۰۰۰"],
+            "correct_answer": "۱۰,۰۰۰"
+          },
+          {
+            "question_number": 2,
+            "question_text": "۲.۵ کیلومتر چند متر است؟",
+            "options": ["۲۵۰", "۲۵۰۰", "۲۵۰۰۰", "۰.۲۵"],
+            "correct_answer": "۲۵۰۰"
+          },
+          {
+            "question_number": 3,
+            "question_text": "مساحت مستطیلی به طول ۳ متر و عرض ۲۰۰ سانتی‌متر چند متر مربع است؟",
+            "options": ["۶۰۰", "۶۰", "۶", "۶۰۰۰۰"],
+            "correct_answer": "۶"
+          },
+          {
+            "question_number": 4,
+            "question_text": "یک هکتار مساوی با چند متر مربع است؟",
+            "options": ["۱۰۰", "۱۰۰۰", "۱۰,۰۰۰", "۱,۰۰۰,۰۰۰"],
+            "correct_answer": "۱۰,۰۰۰"
+          },
+          {
+            "question_number": 5,
+            "question_text": "محیط مربعی با مساحت ۱۶ سانتی‌متر مربع، چند سانتی‌متر است؟",
+            "options": ["۱۶", "۸", "۳۲", "۴"],
+            "correct_answer": "۱۶"
+          }
+        ]
+      },
+      {
+        "lesson_number": 2,
+        "title": "حجم و جرم",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "یک لیتر برابر با کدام یک از گزینه‌های زیر است؟",
+            "options": ["۱ متر مکعب", "۱ سانتی‌متر مکعب", "۱۰۰۰ سانتی‌متر مکعب", "۱۰۰ سانتی‌متر مکعب"],
+            "correct_answer": "۱۰۰۰ سانتی‌متر مکعب"
+          },
+          {
+            "question_number": 2,
+            "question_text": "حجم مکعبی به ضلع ۱۰ سانتی‌متر چند لیتر است؟",
+            "options": ["۱", "۱۰", "۱۰۰", "۱۰۰۰"],
+            "correct_answer": "۱"
+          },
+          {
+            "question_number": 3,
+            "question_text": "۰.۵ تن چند کیلوگرم است؟",
+            "options": ["۵۰", "۵", "۵۰۰۰", "۵۰۰"],
+            "correct_answer": "۵۰۰"
+          },
+          {
+            "question_number": 4,
+            "question_text": "یک متر مکعب چند لیتر است؟",
+            "options": ["۱", "۱۰", "۱۰۰", "۱۰۰۰"],
+            "correct_answer": "۱۰۰۰"
+          },
+          {
+            "question_number": 5,
+            "question_text": "جرم یک سی‌سی آب مقطر تقریباً چقدر است؟",
+            "options": ["۱ گرم", "۱ کیلوگرم", "۱۰ گرم", "۰.۱ گرم"],
+            "correct_answer": "۱ گرم"
+          }
+        ]
+      },
+      {
+        "lesson_number": 3,
+        "title": "مساحت دایره",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "مساحت دایره‌ای به شعاع ۱۰ سانتی‌متر تقریباً چقدر است؟ (عدد پی ≈ ۳.۱۴)",
+            "options": ["۳۱.۴", "۳۱۴", "۶۲.۸", "۱۵۷"],
+            "correct_answer": "۳۱۴"
+          },
+          {
+            "question_number": 2,
+            "question_text": "برای محاسبه مساحت دایره، کدام اندازه را نیاز داریم؟",
+            "options": ["قطر", "محیط", "شعاع", "کمان"],
+            "correct_answer": "شعاع"
+          },
+          {
+            "question_number": 3,
+            "question_text": "مساحت نیم‌دایره‌ای به قطر ۲۰ سانتی‌متر تقریباً چقدر است؟ (عدد پی ≈ ۳)",
+            "options": ["۳۰۰", "۱۵۰", "۶۰", "۱۲۰"],
+            "correct_answer": "۱۵۰"
+          },
+          {
+            "question_number": 4,
+            "question_text": "اگر شعاع دایره‌ای ۲ برابر شود، مساحت آن چند برابر می‌شود؟",
+            "options": ["۲", "۳", "۴", "۸"],
+            "correct_answer": "۴"
+          },
+          {
+            "question_number": 5,
+            "question_text": "فرمول مساحت دایره کدام است؟",
+            "options": ["قطر × عدد پی", "شعاع × عدد پی", "شعاع × شعاع × عدد پی", "قطر × قطر × عدد پی"],
+            "correct_answer": "شعاع × شعاع × عدد پی"
+          }
+        ]
+      },
+      {
+        "lesson_number": 4,
+        "title": "خط و زاویه",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "مجموع دو زاویه متمم چند درجه است؟",
+            "options": ["۱۸۰", "۹۰", "۳۶۰", "۴۵"],
+            "correct_answer": "۹۰"
+          },
+          {
+            "question_number": 2,
+            "question_text": "اگر دو خط متقاطع باشند، زاویه‌های متقابل به راس ...",
+            "options": ["مجموعشان ۱۸۰ است", "مجموعشان ۹۰ است", "متمم هم هستند", "با هم برابرند"],
+            "correct_answer": "با هم برابرند"
+          },
+          {
+            "question_number": 3,
+            "question_text": "مکمل زاویه ۶۰ درجه، چند درجه است؟",
+            "options": ["۳۰", "۹۰", "۱۲۰", "۲۱۰"],
+            "correct_answer": "۱۲۰"
+          },
+          {
+            "question_number": 4,
+            "question_text": "مجموع زوایای داخلی یک مثلث چند درجه است؟",
+            "options": ["۹۰", "۱۸۰", "۲۷۰", "۳۶۰"],
+            "correct_answer": "۱۸۰"
+          },
+          {
+            "question_number": 5,
+            "question_text": "به زاویه‌ای که اندازه‌اش ۹۰ درجه باشد، چه می‌گویند؟",
+            "options": ["تند", "باز", "قائمه", "نیم‌صفحه"],
+            "correct_answer": "قائمه"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chapter_number": 6,
+    "chapter_title": "تناسب و درصد",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "title": "کسر، نسبت و تناسب",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "اگر نسبت سن علی به پدرش ۱ به ۴ باشد و علی ۱۰ سال داشته باشد، پدرش چند ساله است؟",
+            "options": ["۲۰", "۳۰", "۴۰", "۵۰"],
+            "correct_answer": "۴۰"
+          },
+          {
+            "question_number": 2,
+            "question_text": "در تساوی ۲/۳ = ؟/۹، به جای علامت سوال چه عددی قرار می‌گیرد؟",
+            "options": ["۴", "۵", "۶", "۷"],
+            "correct_answer": "۶"
+          },
+          {
+            "question_number": 3,
+            "question_text": "نسبت ۱۲ به ۱۸ در ساده‌ترین شکل کدام است؟",
+            "options": ["۶ به ۹", "۴ به ۶", "۲ به ۳", "۱ به ۱.۵"],
+            "correct_answer": "۲ به ۳"
+          },
+          {
+            "question_number": 4,
+            "question_text": "در یک کلاس ۲۰ پسر و ۱۵ دختر وجود دارد. نسبت تعداد پسرها به کل دانش‌آموزان چقدر است؟",
+            "options": ["۴ به ۳", "۳ به ۴", "۴ به ۷", "۳ به ۷"],
+            "correct_answer": "۴ به ۷"
+          },
+          {
+            "question_number": 5,
+            "question_text": "یک ماشین در ۲ ساعت ۱۶۰ کیلومتر می‌رود. در ۵ ساعت چند کیلومتر می‌رود؟",
+            "options": ["۳۲۰", "۴۰۰", "۴۸۰", "۸۰۰"],
+            "correct_answer": "۴۰۰"
+          }
+        ]
+      },
+      {
+        "lesson_number": 2,
+        "title": "درصد",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "کسر ۱/۴ معادل چند درصد است؟",
+            "options": ["۱۰٪", "۲۵٪", "۴۰٪", "۵۰٪"],
+            "correct_answer": "۲۵٪"
+          },
+          {
+            "question_number": 2,
+            "question_text": "۵۰٪ عدد ۲۰۰ کدام است؟",
+            "options": ["۲۵", "۵۰", "۱۰۰", "۱۵۰"],
+            "correct_answer": "۱۰۰"
+          },
+          {
+            "question_number": 3,
+            "question_text": "عدد اعشاری ۰.۸ معادل چند درصد است؟",
+            "options": ["۸٪", "۰.۸٪", "۸۰٪", "۸۰۰٪"],
+            "correct_answer": "۸۰٪"
+          },
+          {
+            "question_number": 4,
+            "question_text": "۱۵ چه درصدی از ۶۰ است؟",
+            "options": ["۱۵٪", "۲۰٪", "۲۵٪", "۳۰٪"],
+            "correct_answer": "۲۵٪"
+          },
+          {
+            "question_number": 5,
+            "question_text": "در یک آزمون ۲۰ سوالی، دانش‌آموزی به ۱۸ سوال پاسخ صحیح داده است. او چند درصد سوالات را درست جواب داده؟",
+            "options": ["۱۸٪", "۸۰٪", "۸۵٪", "۹۰٪"],
+            "correct_answer": "۹۰٪"
+          }
+        ]
+      },
+      {
+        "lesson_number": 3,
+        "title": "کاربرد درصد در محاسبات مالی",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "کالایی به قیمت ۵۰,۰۰۰ تومان با ۱۰٪ تخفیف فروخته می‌شود. قیمت فروش چقدر است؟",
+            "options": ["۴۰,۰۰۰", "۴۵,۰۰۰", "۵۵,۰۰۰", "۵,۰۰۰"],
+            "correct_answer": "۴۵,۰۰۰"
+          },
+          {
+            "question_number": 2,
+            "question_text": "قیمت یک کتاب پس از ۲۰٪ تخفیف، ۱۶۰۰۰ تومان شده است. قیمت اصلی آن چقدر بوده؟",
+            "options": ["۱۲۸۰۰", "۱۹۲۰۰", "۱۸۰۰۰", "۲۰۰۰۰"],
+            "correct_answer": "۲۰۰۰۰"
+          },
+          {
+            "question_number": 3,
+            "question_text": "فروشنده‌ای کالایی را ۸۰,۰۰۰ تومان خرید و با ۲۵٪ سود فروخت. مقدار سود او چقدر است؟",
+            "options": ["۱۰۰,۰۰۰", "۲۰,۰۰۰", "۲۵,۰۰۰", "۶۰,۰۰۰"],
+            "correct_answer": "۲۰,۰۰۰"
+          },
+          {
+            "question_number": 4,
+            "question_text": "قیمت یک پیراهن ۱۲۰,۰۰۰ تومان است. اگر ۹٪ مالیات بر ارزش افزوده به آن اضافه شود، قیمت نهایی چقدر می‌شود؟",
+            "options": ["۱۲۹,۰۰۰", "۱۳۰,۸۰۰", "۱۰,۸۰۰", "۱۲۱,۰۸۰"],
+            "correct_answer": "۱۳۰,۸۰۰"
+          },
+          {
+            "question_number": 5,
+            "question_text": "قیمت خرید یک کالا ۴۰,۰۰۰ تومان و قیمت فروش آن ۵۰,۰۰۰ تومان است. درصد سود چقدر است؟",
+            "options": ["۱۰٪", "۲۰٪", "۲۵٪", "۳۰٪"],
+            "correct_answer": "۲۵٪"
+          }
+        ]
+      },
+      {
+        "lesson_number": 4,
+        "title": "کاربرد درصد در آمار و احتمال",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "در پرتاب یک تاس، احتمال آمدن عدد زوج چند درصد است؟",
+            "options": ["۳۰٪", "۵۰٪", "۶۰٪", "۱۰۰٪"],
+            "correct_answer": "۵۰٪"
+          },
+          {
+            "question_number": 2,
+            "question_text": "در کیسه‌ای ۵ توپ قرمز و ۱۵ توپ آبی وجود دارد. احتمال بیرون آوردن توپ قرمز چند درصد است؟",
+            "options": ["۵٪", "۱۵٪", "۲۵٪", "۳۳٪"],
+            "correct_answer": "۲۵٪"
+          },
+          {
+            "question_number": 3,
+            "question_text": "در یک نمودار دایره‌ای، زاویه مربوط به یک بخش ۹۰ درجه است. این بخش چند درصد از کل است؟",
+            "options": ["۹۰٪", "۵۰٪", "۲۵٪", "۱۰٪"],
+            "correct_answer": "۲۵٪"
+          },
+          {
+            "question_number": 4,
+            "question_text": "اگر احتمال موفقیت در یک آزمایش ۷۰٪ باشد، احتمال عدم موفقیت چند درصد است؟",
+            "options": ["۳۰٪", "۷۰٪", "۰٪", "۱۰۰٪"],
+            "correct_answer": "۳۰٪"
+          },
+          {
+            "question_number": 5,
+            "question_text": "از ۴۰۰ نفر نظرسنجی شده، ۳۰۰ نفر به گزینه‌ی 'الف' رای دادند. چند درصد به این گزینه رای داده‌اند؟",
+            "options": ["۳۰٪", "۴۰٪", "۷۰٪", "۷۵٪"],
+            "correct_answer": "۷۵٪"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "chapter_number": 7,
+    "chapter_title": "تقریب",
+    "lessons": [
+      {
+        "lesson_number": 1,
+        "title": "تقریب",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "عدد ۳۴۷ با تقریب کمتر از ۱۰ به روش گرد کردن کدام است؟",
+            "options": ["۳۴۰", "۳۰۰", "۳۵۰", "۴۰۰"],
+            "correct_answer": "۳۵۰"
+          },
+          {
+            "question_number": 2,
+            "question_text": "عدد ۵۴۳۱ با تقریب کمتر از ۱۰۰ به روش قطع کردن کدام است؟",
+            "options": ["۵۰۰۰", "۵۴۰۰", "۵۵۰۰", "۵۴۳۰"],
+            "correct_answer": "۵۴۰۰"
+          },
+          {
+            "question_number": 3,
+            "question_text": "عدد ۱۲.۵۷ با تقریب کمتر از ۰.۱ به روش گرد کردن کدام است؟",
+            "options": ["۱۲.۵", "۱۲.۶", "۱۳", "۱۲"],
+            "correct_answer": "۱۲.۶"
+          },
+          {
+            "question_number": 4,
+            "question_text": "در کدام روش تقریب، مقدار تقریبی همیشه کمتر یا مساوی مقدار واقعی است؟",
+            "options": ["گرد کردن", "قطع کردن", "هر دو", "هیچکدام"],
+            "correct_answer": "قطع کردن"
+          },
+          {
+            "question_number": 5,
+            "question_text": "عدد ۴۹۸ با تقریب کمتر از ۱۰۰ به روش گرد کردن کدام است؟",
+            "options": ["۴۰۰", "۴۵۰", "۴۹۰", "۵۰۰"],
+            "correct_answer": "۵۰۰"
+          }
+        ]
+      },
+      {
+        "lesson_number": 2,
+        "title": "اندازه گیری و محاسبات تقریبی",
+        "questions": [
+          {
+            "question_number": 1,
+            "question_text": "حاصل‌جمع تقریبی اعداد ۴/۹ و ۸/۲ (با گرد کردن به نزدیک‌ترین عدد صحیح) کدام است؟",
+            "options": ["۱۲", "۱۳", "۱۴", "۱۳/۱"],
+            "correct_answer": "۱۳"
+          },
+          {
+            "question_number": 2,
+            "question_text": "حاصلضرب تقریبی ۱۹ × ۳۱ (با تقریب کمتر از ۱۰) کدام است؟",
+            "options": ["۶۰۰", "۵۸۹", "۵۹۰", "۵۸۰"],
+            "correct_answer": "۶۰۰"
+          },
+          {
+            "question_number": 3,
+            "question_text": "برای محاسبه تقریبی مساحت زمینی به ابعاد ۲۱.۳ متر و ۹.۸ متر، کدام گزینه مناسب‌تر است؟",
+            "options": ["۲۱ × ۹", "۲۲ × ۱۰", "۲۱ × ۱۰", "۲۰ × ۹"],
+            "correct_answer": "۲۱ × ۱۰"
+          },
+          {
+            "question_number": 4,
+            "question_text": "نتیجه دقیق ۸.۷ + ۶.۴ برابر ۱۵.۱ است. اگر ابتدا اعداد را با تقریب کمتر از ۱ گرد کنیم و سپس جمع کنیم، حاصل چه می‌شود؟",
+            "options": ["۱۴", "۱۵", "۱۶", "۱۵.۱"],
+            "correct_answer": "۱۵"
+          },
+          {
+            "question_number": 5,
+            "question_text": "قیمت کالایی ۱۲۴۵۰ تومان است. این قیمت با تقریب کمتر از ۱۰۰۰ به روش قطع کردن چقدر است؟",
+            "options": ["۱۲۰۰۰", "۱۳۰۰۰", "۱۲۵۰۰", "۱۲۴۰۰"],
+            "correct_answer": "۱۲۰۰۰"
           }
         ]
       }

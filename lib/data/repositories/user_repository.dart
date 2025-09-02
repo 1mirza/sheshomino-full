@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../models/quiz_result_model.dart';
 import '../models/user_profile_model.dart';
 
 // این کلاس با ChangeNotifier ترکیب شده تا بتواند تغییرات را به UI اطلاع دهد
@@ -51,5 +52,14 @@ class UserRepository with ChangeNotifier {
     _saveProfile();
     notifyListeners();
     return true; // موفقیت‌آمیز بود
+  }
+
+  // متد جدید برای افزودن نتیجه آزمون
+  void addQuizResult(QuizResult result) {
+    if (_userProfile == null) return;
+    // آزمون جدید را به ابتدای لیست اضافه می‌کنیم تا جدیدترین‌ها بالاتر باشند
+    _userProfile!.quizHistory.insert(0, result);
+    _saveProfile();
+    notifyListeners();
   }
 }

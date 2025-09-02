@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:sheshomino/widgets/app_background.dart';
+import 'package:sheshomino/widgets/glass_card.dart';
 import '../../../data/models/lesson_model.dart';
 import '../../../data/repositories/user_repository.dart';
 import '../math_content_viewer/math_slides_screen.dart';
@@ -34,7 +36,6 @@ class _MathLessonDetailScreenState extends State<MathLessonDetailScreen> {
     _checkContentAvailability();
   }
 
-  // این تابع به صورت هوشمند بررسی می‌کند که آیا برای هر بخش، محتوایی در فایل جیسون وجود دارد یا خیر
   Future<void> _checkContentAvailability() async {
     await Future.wait([
       _checkJsonContent('assets/json_data/json_riazi/mathslide.json', 'slides',
@@ -102,81 +103,89 @@ class _MathLessonDetailScreenState extends State<MathLessonDetailScreen> {
       },
     ];
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.lesson.title),
-      ),
-      body: _isChecking
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              padding: const EdgeInsets.all(8.0),
-              itemCount: options.length,
-              itemBuilder: (context, index) {
-                final option = options[index];
-                bool isEnabled = option['enabled'];
+    return AppBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text(widget.lesson.title),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: _isChecking
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                padding: const EdgeInsets.all(16.0),
+                itemCount: options.length,
+                itemBuilder: (context, index) {
+                  final option = options[index];
+                  bool isEnabled = option['enabled'];
 
-                return Card(
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 6.0, horizontal: 8.0),
-                  child: ListTile(
-                    leading: Icon(option['icon'],
-                        color: isEnabled
-                            ? Theme.of(context).primaryColor
-                            : Colors.grey),
-                    title: Text(
-                      option['title'],
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: isEnabled ? Colors.black : Colors.grey),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: GlassCard(
+                      child: ListTile(
+                        leading: Icon(option['icon'],
+                            color: isEnabled
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey),
+                        title: Text(
+                          option['title'],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: isEnabled ? Colors.black87 : Colors.grey),
+                        ),
+                        trailing: const Icon(Icons.arrow_forward_ios),
+                        enabled: isEnabled,
+                        onTap: () {
+                          if (!isEnabled) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'محتوایی برای بخش "${option['title']}" یافت نشد.'),
+                                  backgroundColor: Colors.orange),
+                            );
+                            return;
+                          }
+
+                          Widget? destination;
+                          if (option['page'] == 'slides') {
+                            destination = MathSlidesScreen(
+                              chapterNumber: widget.chapterNumber,
+                              lessonNumber: widget.lesson.lessonNumber!,
+                              lessonTitle: widget.lesson.title,
+                              userName: userName,
+                            );
+                          } else if (option['page'] == 'problems') {
+                            destination = MathProblemsScreen(
+                              chapterNumber: widget.chapterNumber,
+                              lessonNumber: widget.lesson.lessonNumber!,
+                              lessonTitle: widget.lesson.title,
+                              userName: userName,
+                            );
+                          } else if (option['page'] == 'quiz') {
+                            destination = MathQuizScreen(
+                              chapterNumber: widget.chapterNumber,
+                              lessonNumber: widget.lesson.lessonNumber!,
+                              lessonTitle: widget.lesson.title,
+                              userName: userName,
+                            );
+                          }
+
+                          if (destination != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => destination!),
+                            );
+                          }
+                        },
+                      ),
                     ),
-                    trailing: const Icon(Icons.arrow_forward_ios),
-                    enabled: isEnabled,
-                    onTap: () {
-                      if (!isEnabled) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                              content: Text(
-                                  'محتوایی برای بخش "${option['title']}" یافت نشد.'),
-                              backgroundColor: Colors.orange),
-                        );
-                        return;
-                      }
-
-                      Widget? destination;
-                      if (option['page'] == 'slides') {
-                        destination = MathSlidesScreen(
-                          chapterNumber: widget.chapterNumber,
-                          lessonNumber: widget.lesson.lessonNumber!,
-                          lessonTitle: widget.lesson.title,
-                          userName: userName,
-                        );
-                      } else if (option['page'] == 'problems') {
-                        destination = MathProblemsScreen(
-                          chapterNumber: widget.chapterNumber,
-                          lessonNumber: widget.lesson.lessonNumber!,
-                          lessonTitle: widget.lesson.title,
-                          userName: userName,
-                        );
-                      } else if (option['page'] == 'quiz') {
-                        destination = MathQuizScreen(
-                          chapterNumber: widget.chapterNumber,
-                          lessonNumber: widget.lesson.lessonNumber!,
-                          lessonTitle: widget.lesson.title,
-                          userName: userName,
-                        );
-                      }
-
-                      if (destination != null) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => destination!),
-                        );
-                      }
-                    },
-                  ),
-                );
-              },
-            ),
+                  );
+                },
+              ),
+      ),
     );
   }
 }

@@ -3,8 +3,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import '../../../data/models/farsi_content_model.dart';
-import '../../../data/repositories/user_repository.dart';
+import '../../../../config/theme/responsive_sizer.dart';
+import '../../../../data/models/farsi_content_model.dart';
+import '../../../../data/models/quiz_result_model.dart';
+import '../../../../data/repositories/user_repository.dart';
+import '../../2_quiz/screens/quiz_result_screen.dart';
 
 class TextLessonGameScreen extends StatefulWidget {
   final int lessonNumber;
@@ -25,14 +28,17 @@ class _TextLessonGameScreenState extends State<TextLessonGameScreen> {
   int _remainingTime = 30;
   List<TextQuestion> _quizQuestions = [];
   int _currentQuestionIndex = 0;
-  int _score = 0;
   bool _isLoading = true;
 
   String? _selectedOption;
   bool _answered = false;
-
-  // <<<<< اصلاحیه: لیستی برای نگهداری گزینه‌های به هم ریخته >>>>>
   List<String> _currentOptions = [];
+
+  // متغیر جدید برای ذخیره عنوان درس
+  String _lessonTitleForQuiz = '';
+
+  // لیست برای ذخیره نتایج سوالات
+  final List<QuestionResult> _quizResults = [];
 
   @override
   void initState() {
@@ -60,7 +66,10 @@ class _TextLessonGameScreenState extends State<TextLessonGameScreen> {
       if (lessonData != null) {
         final TextLesson lesson = TextLesson.fromJson(lessonData);
         _quizQuestions = lesson.questions;
+        _lessonTitleForQuiz = lesson.lessonTitle; // ذخیره عنوان درس
         _quizQuestions.shuffle();
+        // انتخاب حداکثر ۱۰ سوال برای آزمون
+        _quizQuestions = _quizQuestions.take(10).toList();
 
         if (_quizQuestions.isNotEmpty) {
           _setupNewQuestion();
@@ -79,14 +88,13 @@ class _TextLessonGameScreenState extends State<TextLessonGameScreen> {
 
   void _setupNewQuestion() {
     if (_currentQuestionIndex >= _quizQuestions.length) {
-      _showResultDialog();
+      _showResultScreen();
       return;
     }
     setState(() {
       _remainingTime = 30;
       _answered = false;
       _selectedOption = null;
-      // <<<<< اصلاحیه: گزینه‌ها فقط یک بار در اینجا به هم ریخته و ذخیره می‌شوند >>>>>
       _currentOptions = _quizQuestions[_currentQuestionIndex]
           .options
           .values
@@ -94,63 +102,6 @@ class _TextLessonGameScreenState extends State<TextLessonGameScreen> {
         ..shuffle();
     });
     _startTimer();
-  }
-
-  void _checkAnswer(String selectedOption) {
-    if (_answered) return;
-
-    _timer?.cancel();
-    setState(() {
-      _answered = true;
-      _selectedOption = selectedOption;
-    });
-
-    final userRepo = Provider.of<UserRepository>(context, listen: false);
-    final correctAnswer = _quizQuestions[_currentQuestionIndex].correctAnswer;
-
-    if (selectedOption == correctAnswer) {
-      setState(() {
-        _score++;
-        userRepo.addCoins(10);
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('آفرین! پاسخ درست بود.'),
-            backgroundColor: Colors.green),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text('اشتباه بود! پاسخ صحیح: "$correctAnswer"'),
-            backgroundColor: Colors.red),
-      );
-    }
-
-    Future.delayed(const Duration(seconds: 2), () {
-      if (!mounted) return;
-      setState(() {
-        _currentQuestionIndex++;
-        _setupNewQuestion();
-      });
-    });
-  }
-
-  void _skipQuestion() {
-    _timer?.cancel();
-    final correctAnswer = _quizQuestions[_currentQuestionIndex].correctAnswer;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('پاسخ صحیح: "$correctAnswer" بود.'),
-        backgroundColor: Colors.blueGrey,
-      ),
-    );
-    Future.delayed(const Duration(seconds: 2), () {
-      if (!mounted) return;
-      setState(() {
-        _currentQuestionIndex++;
-        _setupNewQuestion();
-      });
-    });
   }
 
   void _startTimer() {
@@ -163,50 +114,151 @@ class _TextLessonGameScreenState extends State<TextLessonGameScreen> {
         });
       } else {
         _timer?.cancel();
-        _skipQuestion();
+        _handleTimeout();
       }
     });
   }
 
+  void _checkAnswer(String selectedOption) {
+    if (_answered) return;
+    _timer?.cancel();
+    _answered = true;
+    _selectedOption = selectedOption;
+
+    final userRepo = Provider.of<UserRepository>(context, listen: false);
+    final currentQuestion = _quizQuestions[_currentQuestionIndex];
+    final bool isCorrect = selectedOption == currentQuestion.correctAnswer;
+
+    if (isCorrect) {
+      userRepo.addCoins(10);
+    }
+
+    _quizResults.add(QuestionResult(
+      question: currentQuestion.question,
+      selectedAnswer: selectedOption,
+      correctAnswer: currentQuestion.correctAnswer,
+      isCorrect: isCorrect,
+    ));
+
+    setState(() {}); // برای نمایش فوری رنگ‌ها
+
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) _goToNextQuestion();
+    });
+  }
+
+  void _handleTimeout() {
+    if (_answered) return;
+    _timer?.cancel();
+    _answered = true;
+
+    final currentQuestion = _quizQuestions[_currentQuestionIndex];
+
+    _quizResults.add(QuestionResult(
+      question: currentQuestion.question,
+      selectedAnswer: "پاسخ داده نشد",
+      correctAnswer: currentQuestion.correctAnswer,
+      isCorrect: false,
+    ));
+
+    setState(() {});
+
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) _goToNextQuestion();
+    });
+  }
+
+  void _goToNextQuestion() {
+    if (_currentQuestionIndex < _quizQuestions.length - 1) {
+      setState(() => _currentQuestionIndex++);
+      _setupNewQuestion();
+    } else {
+      _showResultScreen();
+    }
+  }
+
+  void _showResultScreen() {
+    final userRepo = Provider.of<UserRepository>(context, listen: false);
+    final quizResult = QuizResult(
+      bookTitle: 'متن درس فارسی',
+      lessonTitle: _lessonTitleForQuiz,
+      score: _quizResults.where((r) => r.isCorrect).length,
+      totalQuestions: _quizQuestions.length,
+      date: DateTime.now(),
+      results: _quizResults,
+    );
+    userRepo.addQuizResult(quizResult);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QuizResultScreen(result: quizResult),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    ResponsiveSizer.init(context);
     final userRepo = Provider.of<UserRepository>(context);
     final userCoins = userRepo.userProfile?.coins ?? 0;
 
-    return WillPopScope(
-      onWillPop: _onBackPressed,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('آزمون متن درس'),
-        ),
-        body: _isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : _quizQuestions.isEmpty
-                ? const Center(
-                    child: Text('سؤالی برای این درس یافت نشد.'),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        _buildHeader(widget.userName, userCoins),
-                        const SizedBox(height: 20),
-                        _buildQuestionCard(),
-                        const SizedBox(height: 20),
-                        Expanded(
-                          child: _buildOptionsList(),
-                        ),
-                        ElevatedButton.icon(
-                          onPressed: _answered ? null : _skipQuestion,
-                          icon: const Icon(Icons.skip_next_outlined),
-                          label: const Text('سوال بعدی'),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blueGrey),
-                        ),
-                      ],
-                    ),
+    return Scaffold(
+      appBar: AppBar(title: Text('آزمون: $_lessonTitleForQuiz')),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : _quizQuestions.isEmpty
+              ? const Center(child: Text('سؤالی برای این درس یافت نشد.'))
+              : Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      _buildHeader(widget.userName, userCoins),
+                      const SizedBox(height: 20),
+                      _buildQuestionCard(),
+                      const SizedBox(height: 20),
+                      Expanded(child: _buildOptionsList()),
+                    ],
                   ),
-      ),
+                ),
+    );
+  }
+
+  Widget _buildHeader(String name, int coins) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            const CircleAvatar(),
+            const SizedBox(width: 8),
+            Text(name,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: ResponsiveSizer.sp(14))),
+          ],
+        ),
+        CircleAvatar(
+          radius: 25,
+          backgroundColor: _remainingTime < 10 ? Colors.red : Colors.teal,
+          child: Text(
+            _remainingTime.toString(),
+            style: TextStyle(
+                fontSize: ResponsiveSizer.sp(20),
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+        Row(
+          children: [
+            Text('$coins',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: ResponsiveSizer.sp(16))),
+            const SizedBox(width: 4),
+            const Icon(Icons.monetization_on, color: Colors.amber),
+          ],
+        ),
+      ],
     );
   }
 
@@ -218,7 +270,8 @@ class _TextLessonGameScreenState extends State<TextLessonGameScreen> {
         child: Text(
           _quizQuestions[_currentQuestionIndex].question,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: ResponsiveSizer.sp(16), fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -226,7 +279,6 @@ class _TextLessonGameScreenState extends State<TextLessonGameScreen> {
 
   Widget _buildOptionsList() {
     final question = _quizQuestions[_currentQuestionIndex];
-    // <<<<< اصلاحیه: از لیست گزینه‌هایی که قبلا به هم ریخته شده استفاده می‌کنیم >>>>>
     final options = _currentOptions;
 
     return ListView.builder(
@@ -250,100 +302,15 @@ class _TextLessonGameScreenState extends State<TextLessonGameScreen> {
           color: tileColor,
           margin: const EdgeInsets.symmetric(vertical: 6.0),
           child: ListTile(
-            title: Text(option),
+            title: Text(
+              option,
+              style: TextStyle(fontSize: ResponsiveSizer.sp(15)),
+            ),
             onTap: _answered ? null : () => _checkAnswer(option),
             trailing: trailingIcon,
           ),
         );
       },
-    );
-  }
-
-  void _showResultDialog() {
-    _timer?.cancel();
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => Directionality(
-        textDirection: TextDirection.rtl,
-        child: AlertDialog(
-          title: const Text('پایان آزمون!'),
-          content: Text('امتیاز شما: $_score از ${_quizQuestions.length}'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
-              },
-              child: const Text('بازگشت'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Future<bool> _onBackPressed() async {
-    _timer?.cancel();
-    final shouldPop = await showDialog<bool>(
-      context: context,
-      builder: (context) => Directionality(
-        textDirection: TextDirection.rtl,
-        child: AlertDialog(
-          title: const Text('خروج از آزمون'),
-          content: const Text(
-              'آیا می‌خواهید از آزمون خارج شوید؟ پیشرفت شما ذخیره نخواهد شد.'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('نه، ادامه میدم'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: const Text('بله، خارج شو'),
-            ),
-          ],
-        ),
-      ),
-    );
-    if (shouldPop ?? false) {
-      return true;
-    } else {
-      _startTimer();
-      return false;
-    }
-  }
-
-  Widget _buildHeader(String name, int coins) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            const CircleAvatar(),
-            const SizedBox(width: 8),
-            Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
-          ],
-        ),
-        CircleAvatar(
-          radius: 25,
-          backgroundColor: _remainingTime < 10 ? Colors.red : Colors.teal,
-          child: Text(
-            _remainingTime.toString(),
-            style: const TextStyle(
-                fontSize: 22, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Row(
-          children: [
-            Text('$coins',
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            const SizedBox(width: 4),
-            const Icon(Icons.monetization_on, color: Colors.amber),
-          ],
-        ),
-      ],
     );
   }
 }

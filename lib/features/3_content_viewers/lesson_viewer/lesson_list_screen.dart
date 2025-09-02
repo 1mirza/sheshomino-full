@@ -1,10 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sheshomino/widgets/app_background.dart';
+import 'package:sheshomino/widgets/glass_card.dart';
 import '../../../data/models/lesson_model.dart';
 import 'farsi_lesson_detail_screen.dart';
 import 'math_lesson_detail_screen.dart';
-import 'science_lesson_detail_screen.dart'; // این خط برای شناسایی منوی علوم اضافه شده
+import 'science_lesson_detail_screen.dart';
+import 'social_lesson_detail_screen.dart';
 
 class LessonListScreen extends StatefulWidget {
   final String bookTitle;
@@ -30,15 +33,13 @@ class _LessonListScreenState extends State<LessonListScreen> {
     _loadLessons();
   }
 
-  // این تابع حالا به صورت هوشمند هم از جیسون و هم از لیست ثابت (برای علوم) پشتیبانی می‌کند
   Future<void> _loadLessons() async {
-    // اگر مسیر فایل شامل 'oloom' باشد، لیست ثابت را بارگذاری کن
-    if (widget.jsonPath.contains('oloom')) {
+    // **اصلاح اساسی:** برای تشخیص کتاب علوم، از عنوان کتاب استفاده می‌کنیم که روش مطمئن‌تری است
+    if (widget.bookTitle.contains('علوم')) {
       _loadStaticScienceLessons();
-      return; // از ادامه تابع خارج شو
+      return;
     }
 
-    // در غیر این صورت، برای سایر کتاب‌ها از فایل جیسون بخوان
     try {
       final String response = await rootBundle.loadString(widget.jsonPath);
       final List<dynamic> data = json.decode(response);
@@ -54,7 +55,6 @@ class _LessonListScreenState extends State<LessonListScreen> {
     }
   }
 
-  // این متد لیست ثابت درس‌های علوم را بر اساس کتاب درسی ایجاد می‌کند
   void _loadStaticScienceLessons() {
     _chapters = [
       Chapter(chapterNumber: 1, chapterTitle: "زنگ علوم", lessons: [
@@ -93,56 +93,80 @@ class _LessonListScreenState extends State<LessonListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.bookTitle),
-      ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              padding: const EdgeInsets.all(8.0),
-              itemCount: _chapters.length,
-              itemBuilder: (context, index) {
-                final chapter = _chapters[index];
-                return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ExpansionTile(
-                    initiallyExpanded: true, // همه فصل‌ها باز باشند
-                    leading: CircleAvatar(
-                      child: Text(chapter.chapterNumber.toString()),
-                    ),
-                    title: Text(
-                      chapter.chapterTitle,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    children: chapter.lessons.map((lesson) {
-                      return ListTile(
-                        title: Text(lesson.title),
-                        trailing: const Icon(Icons.arrow_forward_ios),
-                        onTap: () {
-                          if (widget.jsonPath.contains('farsi')) {
-                            // ... کد فارسی
-                          } else if (widget.jsonPath.contains('math')) {
-                            // ... کد ریاضی
-                          } else if (widget.jsonPath.contains('oloom')) {
-                            // **اینجا اتصال نهایی برقرار می‌شود**
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ScienceLessonDetailScreen(
+    return AppBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text(widget.bookTitle),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                padding: const EdgeInsets.all(8.0),
+                itemCount: _chapters.length,
+                itemBuilder: (context, index) {
+                  final chapter = _chapters[index];
+                  return GlassCard(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ExpansionTile(
+                      initiallyExpanded: true,
+                      leading: CircleAvatar(
+                        child: Text(chapter.chapterNumber.toString()),
+                      ),
+                      title: Text(
+                        chapter.chapterTitle,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      children: chapter.lessons.map((lesson) {
+                        return ListTile(
+                          title: Text(lesson.title),
+                          trailing: const Icon(Icons.arrow_forward_ios),
+                          onTap: () {
+                            Widget? destination;
+
+                            // **اصلاح اساسی:** منطق برنامه به حالت صحیح بازگردانده شد
+                            if (widget.bookTitle.contains('فارسی')) {
+                              destination =
+                                  FarsiLessonDetailScreen(lesson: lesson);
+                            } else if (widget.bookTitle.contains('ریاضی')) {
+                              destination = MathLessonDetailScreen(
                                   chapterNumber: chapter.chapterNumber!,
-                                  lesson: lesson,
+                                  lesson: lesson);
+                            } else if (widget.bookTitle.contains('علوم')) {
+                              destination = ScienceLessonDetailScreen(
+                                chapterNumber: chapter.chapterNumber!,
+                                lesson: lesson,
+                              );
+                            } else if (widget.bookTitle.contains('اجتماعی')) {
+                              destination = SocialLessonDetailScreen(
+                                  chapterNumber: chapter.chapterNumber!,
+                                  lesson: lesson);
+                            }
+
+                            if (destination != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => destination!),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                      'صفحه جزئیات این کتاب هنوز آماده نشده است.'),
                                 ),
-                              ),
-                            );
-                          }
-                        },
-                      );
-                    }).toList(),
-                  ),
-                );
-              },
-            ),
+                              );
+                            }
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  );
+                },
+              ),
+      ),
     );
   }
 }

@@ -2,13 +2,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:sheshomino/widgets/app_background.dart';
+import 'package:sheshomino/widgets/glass_card.dart';
 import '../../../data/models/lesson_model.dart';
 import '../../../data/repositories/user_repository.dart';
 import '../science_content_viewer/science_content_screen.dart';
 import '../science_content_viewer/science_quiz_screen.dart';
 
 class ScienceLessonDetailScreen extends StatefulWidget {
-  // **تغییر اصلی اینجاست: پارامتر جدید اضافه شد**
   final int chapterNumber;
   final Lesson lesson;
 
@@ -52,7 +53,6 @@ class _ScienceLessonDetailScreenState extends State<ScienceLessonDetailScreen> {
       final String response = await rootBundle.loadString(path);
       final List<dynamic> data = json.decode(response);
       final chapterData = data.firstWhere(
-          // **و اینجا از آن استفاده می‌کنیم**
           (d) => d['chapter_number'] == widget.chapterNumber,
           orElse: () => null);
       if (chapterData != null) {
@@ -100,92 +100,97 @@ class _ScienceLessonDetailScreenState extends State<ScienceLessonDetailScreen> {
       },
     ];
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.lesson.title),
-      ),
-      body: _isChecking
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              padding: const EdgeInsets.all(8.0),
-              itemCount: options.length,
-              itemBuilder: (context, index) {
-                final option = options[index];
-                bool isEnabled = option['enabled'];
+    return AppBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text(widget.lesson.title),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: _isChecking
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                padding: const EdgeInsets.all(16.0),
+                itemCount: options.length,
+                itemBuilder: (context, index) {
+                  final option = options[index];
+                  bool isEnabled = option['enabled'];
 
-                return Card(
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 6.0, horizontal: 8.0),
-                  child: ListTile(
-                    leading: Icon(option['icon'],
-                        color: isEnabled
-                            ? Theme.of(context).primaryColor
-                            : Colors.grey),
-                    title: Text(
-                      option['title'],
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: isEnabled ? Colors.black : Colors.grey),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: GlassCard(
+                      child: ListTile(
+                        leading: Icon(option['icon'],
+                            color: isEnabled
+                                ? Theme.of(context).primaryColor
+                                : Colors.grey),
+                        title: Text(
+                          option['title'],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: isEnabled ? Colors.black87 : Colors.grey),
+                        ),
+                        trailing: const Icon(Icons.arrow_forward_ios),
+                        enabled: isEnabled,
+                        onTap: () {
+                          if (!isEnabled) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'محتوایی برای بخش "${option['title']}" یافت نشد.'),
+                                  backgroundColor: Colors.orange),
+                            );
+                            return;
+                          }
+
+                          Widget? destination;
+                          if (option['page'] == 'slides') {
+                            destination = ScienceContentScreen(
+                              screenTitle: "جزوه: ${widget.lesson.title}",
+                              chapterNumber: widget.chapterNumber,
+                              lessonNumber: widget.lesson.lessonNumber!,
+                              jsonPath:
+                                  'assets/json_data/json_oloom/science_slides.json',
+                              contentKey: 'slides',
+                              numberKey: 'slide_number',
+                              userName: userName,
+                            );
+                          } else if (option['page'] == 'experiments') {
+                            destination = ScienceContentScreen(
+                              screenTitle: "آزمایش: ${widget.lesson.title}",
+                              chapterNumber: widget.chapterNumber,
+                              lessonNumber: widget.lesson.lessonNumber!,
+                              jsonPath:
+                                  'assets/json_data/json_oloom/science_experiments.json',
+                              contentKey: 'experiments',
+                              numberKey: 'experiment_number',
+                              userName: userName,
+                            );
+                          } else if (option['page'] == 'quiz') {
+                            destination = ScienceQuizScreen(
+                              chapterNumber: widget.chapterNumber,
+                              lessonNumber: widget.lesson.lessonNumber!,
+                              lessonTitle: widget.lesson.title,
+                              userName: userName,
+                            );
+                          }
+
+                          if (destination != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => destination!),
+                            );
+                          }
+                        },
+                      ),
                     ),
-                    trailing: const Icon(Icons.arrow_forward_ios),
-                    enabled: isEnabled,
-                    onTap: () {
-                      if (!isEnabled) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                              content: Text(
-                                  'محتوایی برای بخش "${option['title']}" یافت نشد.'),
-                              backgroundColor: Colors.orange),
-                        );
-                        return;
-                      }
-
-                      Widget? destination;
-                      if (option['page'] == 'slides') {
-                        destination = ScienceContentScreen(
-                          screenTitle: "جزوه: ${widget.lesson.title}",
-                          // **و اینجا آن را به صفحه بعدی می‌فرستیم**
-                          chapterNumber: widget.chapterNumber,
-                          lessonNumber: widget.lesson.lessonNumber!,
-                          jsonPath:
-                              'assets/json_data/json_oloom/science_slides.json',
-                          contentKey: 'slides',
-                          numberKey: 'slide_number',
-                          userName: userName,
-                        );
-                      } else if (option['page'] == 'experiments') {
-                        destination = ScienceContentScreen(
-                          screenTitle: "آزمایش: ${widget.lesson.title}",
-                          // **و اینجا آن را به صفحه بعدی می‌فرستیم**
-                          chapterNumber: widget.chapterNumber,
-                          lessonNumber: widget.lesson.lessonNumber!,
-                          jsonPath:
-                              'assets/json_data/json_oloom/science_experiments.json',
-                          contentKey: 'experiments',
-                          numberKey: 'experiment_number',
-                          userName: userName,
-                        );
-                      } else if (option['page'] == 'quiz') {
-                        destination = ScienceQuizScreen(
-                          // **و اینجا آن را به صفحه بعدی می‌فرستیم**
-                          chapterNumber: widget.chapterNumber,
-                          lessonNumber: widget.lesson.lessonNumber!,
-                          lessonTitle: widget.lesson.title,
-                          userName: userName,
-                        );
-                      }
-
-                      if (destination != null) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => destination!),
-                        );
-                      }
-                    },
-                  ),
-                );
-              },
-            ),
+                  );
+                },
+              ),
+      ),
     );
   }
 }

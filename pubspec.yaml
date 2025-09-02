@@ -18,6 +18,8 @@ dependencies:
   
   # پکیج برای مدیریت وضعیت مرکزی برنامه (مثل سکه‌ها)
   provider: ^6.1.2
+  fl_chart: ^1.1.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -34,7 +36,8 @@ flutter:
     - assets/json_data/
     - assets/json_data/farsi_json/
     - assets/json_data/json_riazi/
-    - assets/json_data/json_oloom/ # پوشه جدید علوم اضافه شد
+    - assets/json_data/json_oloom/
+    - assets/json_data/json_ejtemae/ # پوشه جدید اجتماعی اضافه شد
 
   # برای اضافه کردن فونت فارسی، این بخش را از کامنت خارج کرده و مسیر فونت را بدهید
   # fonts:

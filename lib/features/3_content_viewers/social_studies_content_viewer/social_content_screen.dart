@@ -5,88 +5,173 @@ import 'package:provider/provider.dart';
 import 'package:sheshomino/widgets/app_background.dart';
 import 'package:sheshomino/widgets/glass_card.dart';
 import '../../../config/theme/responsive_sizer.dart';
-import '../../../data/models/math_lesson_model.dart';
 import '../../../data/repositories/user_repository.dart';
 
-// این صفحه برای نمایش اسلایدهای اشکالات رایج است
-class MathProblemsScreen extends StatefulWidget {
+// Models specific to this screen for clarity
+class ContentSlide {
+  final int number;
+  final String title;
+  final String content;
+
+  ContentSlide(
+      {required this.number, required this.title, required this.content});
+
+  factory ContentSlide.fromJson(Map<String, dynamic> json, String numberKey) {
+    return ContentSlide(
+      number: json[numberKey],
+      title: json['title'],
+      content: json['content'],
+    );
+  }
+}
+
+class ContentLesson {
+  final int lessonNumber;
+  final String title;
+  final List<ContentSlide> slides;
+
+  ContentLesson(
+      {required this.lessonNumber, required this.title, required this.slides});
+
+  factory ContentLesson.fromJson(
+      Map<String, dynamic> json, String contentKey, String numberKey) {
+    var contentList = json[contentKey] as List? ?? [];
+    List<ContentSlide> parsedSlides =
+        contentList.map((s) => ContentSlide.fromJson(s, numberKey)).toList();
+    return ContentLesson(
+      lessonNumber: json['lesson_number'],
+      title: json['title'],
+      slides: parsedSlides,
+    );
+  }
+}
+
+class SocialContentScreen extends StatefulWidget {
+  final String screenTitle;
   final int chapterNumber;
   final int lessonNumber;
-  final String lessonTitle;
+  final String jsonPath;
+  final String contentKey; // 'slides'
+  final String numberKey; // 'slide_number'
   final String userName;
 
-  const MathProblemsScreen({
+  const SocialContentScreen({
     super.key,
+    required this.screenTitle,
     required this.chapterNumber,
     required this.lessonNumber,
-    required this.lessonTitle,
+    required this.jsonPath,
+    required this.contentKey,
+    required this.numberKey,
     required this.userName,
   });
 
   @override
-  State<MathProblemsScreen> createState() => _MathProblemsScreenState();
+  State<SocialContentScreen> createState() => _SocialContentScreenState();
 }
 
-class _MathProblemsScreenState extends State<MathProblemsScreen> {
-  List<MathSlide> _slides = [];
+class _SocialContentScreenState extends State<SocialContentScreen> {
+  List<ContentSlide> _slides = [];
   bool _isLoading = true;
   int _currentSlideIndex = 0;
+  final Set<int> _viewedSlides = {};
 
   @override
   void initState() {
     super.initState();
-    _loadSlides();
+    _loadContent();
   }
 
-  Future<void> _loadSlides() async {
+  Future<void> _loadContent() async {
     try {
-      final String response = await rootBundle
-          .loadString('assets/json_data/json_riazi/eshkalriazi.json');
-      final List<dynamic> chaptersList = json.decode(response);
-
-      final chapterData = chaptersList.firstWhere(
-          (chapter) => chapter['chapter_number'] == widget.chapterNumber,
+      final String response = await rootBundle.loadString(widget.jsonPath);
+      final List<dynamic> data = json.decode(response);
+      final chapterData = data.firstWhere(
+          (d) => d['chapter_number'] == widget.chapterNumber,
           orElse: () => null);
 
       if (chapterData != null) {
-        final List<dynamic> lessonsList = chapterData['lessons'];
-        final lessonData = lessonsList.firstWhere(
-            (lesson) => lesson['lesson_number'] == widget.lessonNumber,
+        final lessonData = (chapterData['lessons'] as List).firstWhere(
+            (l) => l['lesson_number'] == widget.lessonNumber,
             orElse: () => null);
 
         if (lessonData != null) {
-          // از همان مدل MathLesson استفاده می‌کنیم چون ساختار جیسون مشابه است
-          final MathLesson lesson = MathLesson.fromJson(lessonData);
+          final ContentLesson lesson = ContentLesson.fromJson(
+              lessonData, widget.contentKey, widget.numberKey);
           _slides = lesson.slides;
         }
       }
     } catch (e) {
-      print("!!! CRITICAL ERROR loading problems slides: $e");
+      print("Error loading content from ${widget.jsonPath}: $e");
     } finally {
       if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
+        setState(() => _isLoading = false);
+        _awardInitialCoin();
       }
     }
   }
 
+  void _awardInitialCoin() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_slides.isNotEmpty && mounted) {
+        final userRepo = Provider.of<UserRepository>(context, listen: false);
+        userRepo.addCoins(5);
+        _viewedSlides.add(0);
+      }
+    });
+  }
+
   void _goToNextSlide() {
     if (_currentSlideIndex < _slides.length - 1) {
-      setState(() {
-        _currentSlideIndex++;
-      });
+      setState(() => _currentSlideIndex++);
+      _awardCoinForNewSlide();
     } else {
-      Navigator.of(context).pop(); // بازگشت به منوی درس
+      _showCompletionDialog();
     }
   }
 
   void _goToPreviousSlide() {
     if (_currentSlideIndex > 0) {
-      setState(() {
-        _currentSlideIndex--;
-      });
+      setState(() => _currentSlideIndex--);
     }
+  }
+
+  void _awardCoinForNewSlide() {
+    if (!_viewedSlides.contains(_currentSlideIndex)) {
+      final userRepo = Provider.of<UserRepository>(context, listen: false);
+      userRepo.addCoins(5);
+      _viewedSlides.add(_currentSlideIndex);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('🎉 ۵ سکه جایزه گرفتی!'),
+          duration: Duration(seconds: 1),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
+  }
+
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Directionality(
+        textDirection: TextDirection.rtl,
+        child: AlertDialog(
+          title: const Text('تبریک!'),
+          content: const Text('شما تمام بخش‌های این قسمت را مشاهده کردید.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+              child: const Text('بازگشت به منوی درس'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -99,7 +184,7 @@ class _MathProblemsScreenState extends State<MathProblemsScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: Text("اشکالات رایج: ${widget.lessonTitle}"),
+          title: Text(widget.screenTitle),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
@@ -135,7 +220,7 @@ class _MathProblemsScreenState extends State<MathProblemsScreen> {
                                         _slides[_currentSlideIndex].content,
                                         style: TextStyle(
                                             fontSize: ResponsiveSizer.sp(15),
-                                            height: 1.7,
+                                            height: 1.5,
                                             color:
                                                 Colors.black.withOpacity(0.7)),
                                       ),
@@ -171,7 +256,7 @@ class _MathProblemsScreenState extends State<MathProblemsScreen> {
           ],
         ),
         Text(
-          'اسلاید ${_currentSlideIndex + 1} از ${_slides.length}',
+          'صفحه ${_currentSlideIndex + 1} از ${_slides.length}',
           style: TextStyle(
               fontSize: ResponsiveSizer.sp(15),
               fontWeight: FontWeight.bold,
@@ -205,11 +290,10 @@ class _MathProblemsScreenState extends State<MathProblemsScreen> {
           onPressed: _goToNextSlide,
           icon: const Icon(Icons.arrow_forward_ios),
           label: Text(
-            _currentSlideIndex == _slides.length - 1 ? 'بازگشت' : 'بعدی',
+            _currentSlideIndex == _slides.length - 1 ? 'پایان' : 'بعدی',
           ),
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.green,
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
           ),
         ),
       ],

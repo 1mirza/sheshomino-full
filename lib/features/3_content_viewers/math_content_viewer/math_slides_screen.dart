@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import '../../../config/theme/responsive_sizer.dart'; // فایل واکنش‌گرا را وارد می‌کنیم
+import 'package:sheshomino/widgets/app_background.dart';
+import 'package:sheshomino/widgets/glass_card.dart';
+import '../../../config/theme/responsive_sizer.dart';
 import '../../../data/models/math_lesson_model.dart';
 import '../../../data/repositories/user_repository.dart';
 
@@ -136,62 +138,67 @@ class _MathSlidesScreenState extends State<MathSlidesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // مقداردهی اولیه ResponsiveSizer
     ResponsiveSizer.init(context);
-
     final userRepo = Provider.of<UserRepository>(context);
     final userCoins = userRepo.userProfile?.coins ?? 0;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.lessonTitle),
-      ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : _slides.isEmpty
-              ? const Center(child: Text('جزوه ای برای این درس یافت نشد.'))
-              : Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      _buildHeader(widget.userName, userCoins),
-                      const SizedBox(height: 20),
-                      Expanded(
-                        child: Card(
-                          elevation: 6,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Text(
-                                  _slides[_currentSlideIndex].title,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: ResponsiveSizer.sp(18),
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const Divider(height: 30),
-                                Expanded(
-                                  child: SingleChildScrollView(
-                                    child: Text(
-                                      _slides[_currentSlideIndex].content,
-                                      style: TextStyle(
-                                          fontSize: ResponsiveSizer.sp(15),
-                                          height: 1.5),
+    return AppBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text(widget.lessonTitle),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : _slides.isEmpty
+                ? const Center(child: Text('جزوه ای برای این درس یافت نشد.'))
+                : Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        _buildHeader(widget.userName, userCoins),
+                        const SizedBox(height: 20),
+                        Expanded(
+                          child: GlassCard(
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Text(
+                                    _slides[_currentSlideIndex].title,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: ResponsiveSizer.sp(18),
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87),
+                                  ),
+                                  const Divider(height: 30),
+                                  Expanded(
+                                    child: SingleChildScrollView(
+                                      child: Text(
+                                        _slides[_currentSlideIndex].content,
+                                        style: TextStyle(
+                                            fontSize: ResponsiveSizer.sp(15),
+                                            height: 1.7,
+                                            color:
+                                                Colors.black.withOpacity(0.7)),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      _buildNavigationControls(),
-                    ],
+                        const SizedBox(height: 20),
+                        _buildNavigationControls(),
+                      ],
+                    ),
                   ),
-                ),
+      ),
     );
   }
 
@@ -206,20 +213,24 @@ class _MathSlidesScreenState extends State<MathSlidesScreen> {
             Text(name,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: ResponsiveSizer.sp(14))),
+                    fontSize: ResponsiveSizer.sp(14),
+                    color: Colors.white)),
           ],
         ),
         Text(
           'اسلاید ${_currentSlideIndex + 1} از ${_slides.length}',
           style: TextStyle(
-              fontSize: ResponsiveSizer.sp(15), fontWeight: FontWeight.bold),
+              fontSize: ResponsiveSizer.sp(15),
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
         ),
         Row(
           children: [
             Text('$coins',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: ResponsiveSizer.sp(16))),
+                    fontSize: ResponsiveSizer.sp(16),
+                    color: Colors.white)),
             const SizedBox(width: 4),
             const Icon(Icons.monetization_on, color: Colors.amber),
           ],
