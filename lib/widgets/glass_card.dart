@@ -1,37 +1,45 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import '../config/theme/app_colors.dart';
 
 class GlassCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin; // **پارامتر جدید اضافه شد**
+  final Color? color;
 
-  const GlassCard({super.key, required this.child, this.padding});
+  const GlassCard({
+    super.key,
+    required this.child,
+    this.padding,
+    this.margin, // **پارامتر جدید اضافه شد**
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // --- شروع تغییرات نهایی ---
-    // این کد ظاهر کارت‌ها را دقیقاً مطابق با درخواست شما می‌کند:
-    // پس‌زمینه سفید مات برای خوانایی بالا و حاشیه رنگی زیبا.
-    return Container(
-      padding: padding ?? const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Colors.white, // پس‌زمینه کاملاً سفید و مات
+    return Padding(
+      // **اصلاح شد: از پارامتر مارجین استفاده می‌کنیم**
+      padding: margin ?? EdgeInsets.zero,
+      child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
-        border: Border.all(
-          color: AppColors.primary.withOpacity(0.5), // حاشیه رنگی با شفافیت کم
-          width: 2.0, // ضخامت حاشیه
-        ),
-        boxShadow: [
-          // یک سایه بسیار ملایم برای برجستگی و زیبایی بیشتر
-          BoxShadow(
-            color: AppColors.primary.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: color ?? Colors.white.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(20.0),
+              border: Border.all(
+                color: Colors.white.withOpacity(0.2),
+                width: 1.5,
+              ),
+            ),
+            child: Padding(
+              padding: padding ?? const EdgeInsets.all(16.0),
+              child: child,
+            ),
           ),
-        ],
+        ),
       ),
-      child: child,
     );
-    // --- پایان تغییرات نهایی ---
   }
 }

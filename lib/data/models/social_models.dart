@@ -1,39 +1,36 @@
-// این فایل ساختار داده‌ای محتوای کتاب مطالعات اجتماعی را تعریف می‌کند
-
-// مدل برای یک اسلاید جزوه یا یک فعالیت
-class ContentSlide {
+class SocialContentSlide {
   final int number;
   final String title;
   final String content;
 
-  ContentSlide(
+  SocialContentSlide(
       {required this.number, required this.title, required this.content});
 
-  factory ContentSlide.fromJson(Map<String, dynamic> json, String numberKey) {
-    return ContentSlide(
+  factory SocialContentSlide.fromJson(
+      Map<String, dynamic> json, String numberKey) {
+    return SocialContentSlide(
       number: json[numberKey],
-      title:
-          json['title'] ?? json['question'] ?? 'بدون عنوان', // هوشمندسازی عنوان
-      content: json['content'] ?? json['answer'] ?? '', // هوشمندسازی محتوا
+      title: json['title'],
+      content: json['content'],
     );
   }
 }
 
-// مدل برای یک درس کامل از نوع جزوه یا فعالیت
-class ContentLesson {
+class SocialContentLesson {
   final int lessonNumber;
   final String title;
-  final List<ContentSlide> slides;
+  final List<SocialContentSlide> slides;
 
-  ContentLesson(
+  SocialContentLesson(
       {required this.lessonNumber, required this.title, required this.slides});
 
-  factory ContentLesson.fromJson(
+  factory SocialContentLesson.fromJson(
       Map<String, dynamic> json, String contentKey, String numberKey) {
     var contentList = json[contentKey] as List? ?? [];
-    List<ContentSlide> parsedSlides =
-        contentList.map((s) => ContentSlide.fromJson(s, numberKey)).toList();
-    return ContentLesson(
+    List<SocialContentSlide> parsedSlides = contentList
+        .map((s) => SocialContentSlide.fromJson(s, numberKey))
+        .toList();
+    return SocialContentLesson(
       lessonNumber: json['lesson_number'],
       title: json['title'],
       slides: parsedSlides,
@@ -41,33 +38,26 @@ class ContentLesson {
   }
 }
 
-// مدل برای یک سوال آزمون
 class SocialQuizQuestion {
-  final int id;
   final String question;
-  final Map<String, String> options;
+  final List<String> options;
   final String answer;
 
-  SocialQuizQuestion(
-      {required this.id,
-      required this.question,
-      required this.options,
-      required this.answer});
+  SocialQuizQuestion({
+    required this.question,
+    required this.options,
+    required this.answer,
+  });
 
   factory SocialQuizQuestion.fromJson(Map<String, dynamic> json) {
-    final Map<String, String> castedOptions = (json['options'] as Map).map(
-      (key, value) => MapEntry(key.toString(), value.toString()),
-    );
     return SocialQuizQuestion(
-      id: json['id'],
       question: json['question'],
-      options: castedOptions,
+      options: List<String>.from(json['options']),
       answer: json['answer'],
     );
   }
 }
 
-// مدل برای یک درس کامل آزمون
 class SocialQuizLesson {
   final int lessonNumber;
   final String title;
